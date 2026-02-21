@@ -35,17 +35,30 @@ npm run pack:dry
 ## Package Usage Example
 
 ```svelte
-<script lang="ts">
-	import { LvrsThemeProvider, ApplicationWindow, AppCard, Label } from 'lvrs-svelte';
+<script>
+	import { AppCard, Label } from 'lvrs-svelte';
 </script>
 
-<LvrsThemeProvider>
-	<ApplicationWindow title="LVRS-Svelte">
-		<AppCard title="Card">
-			<Label variant="body">Hello LVRS</Label>
-		</AppCard>
-	</ApplicationWindow>
-</LvrsThemeProvider>
+<AppCard title="Card">
+	<Label variant="body">Hello LVRS</Label>
+</AppCard>
+```
+
+`LvrsThemeProvider` and `ApplicationWindow` are optional.
+Default LVRS theme variables are automatically installed at package import time, so components can be used directly.
+
+Optional global theme override:
+
+```js
+import { applyLvrsTheme } from 'lvrs-svelte';
+
+applyLvrsTheme({
+	colors: {
+		semantic: {
+			primary: '#2ED3A0'
+		}
+	}
+});
 ```
 
 ## NPM Publishing Procedure

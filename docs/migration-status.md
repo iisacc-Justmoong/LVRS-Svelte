@@ -3,8 +3,15 @@
 ## Status Definitions
 
 - `READY`: Svelte implementation and export are complete
-- `PLANNED`: API/directory is defined, implementation pending
-- `OUT_OF_SCOPE_NOW`: intentionally excluded in the current readiness phase
+- `EXCLUDED_BACKEND_REQUIRED`: excluded because separate backend/runtime dependency is required
+
+## Summary
+
+- QML component names: `46`
+- Svelte component names: `47` (includes LVRS-Svelte-only components such as `ApplicationWindow`, `AppShell`, `LvrsThemeProvider`)
+- QML names not implemented: `2`
+  - `EventListener`
+  - `TextEditor`
 
 ## app
 
@@ -12,80 +19,69 @@
 |---|---|---|
 | `ApplicationWindow.qml` | `ApplicationWindow.svelte` | READY |
 | `AppShell.qml` | `AppShell.svelte` | READY |
-| `Window.qml` | None | PLANNED |
 
 ## layout
 
 | Source (QML) | Svelte | Status |
 |---|---|---|
+| `AppHeader.qml` | `AppHeader.svelte` | READY |
 | `HStack.qml` | `HStack.svelte` | READY |
 | `VStack.qml` | `VStack.svelte` | READY |
 | `ZStack.qml` | `ZStack.svelte` | READY |
 | `Spacer.qml` | `Spacer.svelte` | READY |
-| `AppHeader.qml` | None | PLANNED |
 
-## control - buttons
+## control - buttons/check/display/input/util
 
 | Source (QML) | Svelte | Status |
 |---|---|---|
+| `AbstractButton.qml` | `AbstractButton.svelte` | READY |
+| `IconButton.qml` | `IconButton.svelte` | READY |
+| `IconMenuButton.qml` | `IconMenuButton.svelte` | READY |
+| `IconSegmentedControl.qml` | `IconSegmentedControl.svelte` | READY |
 | `LabelButton.qml` | `LabelButton.svelte` | READY |
-| `AbstractButton.qml` | None | PLANNED |
-| `IconButton.qml` | None | PLANNED |
-| `IconMenuButton.qml` | None | PLANNED |
-| `LabelMenuButton.qml` | None | PLANNED |
-| `IconSegmentedControl.qml` | None | PLANNED |
-| `LabelSegmentedControl.qml` | None | PLANNED |
-
-## control - display/input/check/util
-
-| Source (QML) | Svelte | Status |
-|---|---|---|
+| `LabelMenuButton.qml` | `LabelMenuButton.svelte` | READY |
+| `LabelSegmentedControl.qml` | `LabelSegmentedControl.svelte` | READY |
+| `CheckBox.qml` | `CheckBox.svelte` | READY |
+| `RadioButton.qml` | `RadioButton.svelte` | READY |
+| `ToggleSwitch.qml` | `ToggleSwitch.svelte` | READY |
 | `Label.qml` | `Label.svelte` | READY |
-| `ProgressBar.qml` | None | PLANNED |
-| `Table.qml` | None | PLANNED |
-| `TableHeader.qml` | None | PLANNED |
-| `TableRow.qml` | None | PLANNED |
-| `TableCellItem.qml` | None | PLANNED |
-| `InputField.qml` | None | PLANNED |
-| `TextEditor.qml` | None | PLANNED |
-| `CodeEditor.qml` | None | PLANNED |
-| `CheckBox.qml` | None | PLANNED |
-| `RadioButton.qml` | None | PLANNED |
-| `ToggleSwitch.qml` | None | PLANNED |
-| `EventListener.qml` | None | OUT_OF_SCOPE_NOW |
-| `InputMethodGuard.qml` | None | OUT_OF_SCOPE_NOW |
-| `WheelScrollGuard.qml` | None | OUT_OF_SCOPE_NOW |
+| `ProgressBar.qml` | `ProgressBar.svelte` | READY |
+| `Table.qml` | `Table.svelte` | READY |
+| `TableCellItem.qml` | `TableCellItem.svelte` | READY |
+| `TableHeader.qml` | `TableHeader.svelte` | READY |
+| `TableRow.qml` | `TableRow.svelte` | READY |
+| `AbstractInputBar.qml` | `AbstractInputBar.svelte` | READY |
+| `InputField.qml` | `InputField.svelte` | READY |
+| `CodeEditor.qml` | `CodeEditor.svelte` | READY |
+| `InputMethodGuard.qml` | `InputMethodGuard.svelte` | READY |
+| `WheelScrollGuard.qml` | `WheelScrollGuard.svelte` | READY |
+| `EventListener.qml` | None | EXCLUDED_BACKEND_REQUIRED |
+| `TextEditor.qml` | None | EXCLUDED_BACKEND_REQUIRED |
 
 ## surfaces
 
 | Source (QML) | Svelte | Status |
 |---|---|---|
-| `AppCard.qml` | `AppCard.svelte` | READY |
 | `Alert.qml` | `Alert.svelte` | READY |
-| `AlertButton.qml` | Reused `LabelButton.svelte` | READY |
+| `AlertButton.qml` | `AlertButton.svelte` | READY |
+| `AppCard.qml` | `AppCard.svelte` | READY |
 
 ## navigation
 
 | Source (QML) | Svelte | Status |
 |---|---|---|
-| `Navigator.qml` | None | PLANNED |
-| `PageRouter.qml` | None | PLANNED |
-| `ContextMenu.qml` | None | PLANNED |
-| `Hierarchy.qml` | None | PLANNED |
-| `HierarchyItem.qml` | None | PLANNED |
-| `HierarchyList.qml` | None | PLANNED |
-| `HierarchyToolbar.qml` | None | PLANNED |
-| `List.qml` | None | PLANNED |
-| `ListItem.qml` | None | PLANNED |
-| `ListToolbar.qml` | None | PLANNED |
-| `ListFooter.qml` | None | PLANNED |
-| `ToolbarButton.qml` | None | PLANNED |
-| `MenuItem.qml` | None | PLANNED |
-| `MenuDivider.qml` | None | PLANNED |
-| `Link.qml` | None | PLANNED |
-
-## Proposed Next Priorities
-
-1. `AbstractButton`, `IconButton`, `CheckBox`, `RadioButton`, `ToggleSwitch`
-2. `InputField`, `ProgressBar`, `ContextMenu`
-3. `PageRouter`, `Navigator`, `Hierarchy` family
+| `ContextMenu.qml` | `ContextMenu.svelte` | READY |
+| `Hierarchy.qml` | `Hierarchy.svelte` | READY |
+| `HierarchyItem.qml` | `HierarchyItem.svelte` | READY |
+| `HierarchyList.qml` | `HierarchyList.svelte` | READY |
+| `HierarchyToolbar.qml` | `HierarchyToolbar.svelte` | READY |
+| `Link.qml` | `Link.svelte` | READY |
+| `List.qml` | `List.svelte` | READY |
+| `ListFooter.qml` | `ListFooter.svelte` | READY |
+| `ListItem.qml` | `ListItem.svelte` | READY |
+| `ListToolbar.qml` | `ListToolbar.svelte` | READY |
+| `MenuDivider.qml` | `MenuDivider.svelte` | READY |
+| `MenuItem.qml` | `MenuItem.svelte` | READY |
+| `Navigator.qml` | `Navigator.svelte` | READY |
+| `PageRouter.qml` | `PageRouter.svelte` | READY |
+| `ToolbarButton.qml` | `ToolbarButton.svelte` | READY |
