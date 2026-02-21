@@ -1,4 +1,4 @@
-export type HStackAlignment = 'top' | 'center' | 'bottom';
+export type HStackAlignment = 'top' | 'center' | 'bottom' | 'firstTextBaseline' | 'lastTextBaseline';
 export type VStackAlignment = 'leading' | 'center' | 'trailing';
 export type ZStackAlignment =
 	| 'topLeading'
@@ -10,7 +10,6 @@ export type ZStackAlignment =
 	| 'bottomLeading'
 	| 'bottom'
 	| 'bottomTrailing';
-export type SpacerAxis = 'horizontal' | 'vertical' | 'both';
 
 export type LabelVariant = 'title' | 'title2' | 'header' | 'header2' | 'body' | 'description' | 'caption' | 'disabled';
 export type LabelAlign = 'left' | 'center' | 'right';

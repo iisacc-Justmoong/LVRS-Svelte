@@ -1,15 +1,14 @@
 <script lang="ts">
 	import type { VStackAlignment } from '../../types.js';
 
-	export let spacing = -1;
-	export let defaultSpacing = 8;
-	export let alignmentName: VStackAlignment = 'center';
+	export let alignment: VStackAlignment = 'center';
+	export let spacing: number | undefined = undefined;
 
-	$: resolvedGap = spacing < 0 ? defaultSpacing : spacing;
-	$: alignItems = alignmentName === 'leading' ? 'flex-start' : alignmentName === 'trailing' ? 'flex-end' : 'center';
+	$: resolvedGap = typeof spacing === 'number' ? `${spacing}px` : 'var(--lvrs-stack-system-spacing, 8px)';
+	$: alignItems = alignment === 'leading' ? 'flex-start' : alignment === 'trailing' ? 'flex-end' : 'center';
 </script>
 
-<div class="lvrs-vstack" style={`--lvrs-stack-gap: ${resolvedGap}px; align-items: ${alignItems};`}>
+<div class="lvrs-vstack" style={`--lvrs-stack-gap: ${resolvedGap}; align-items: ${alignItems};`}>
 	<slot />
 </div>
 

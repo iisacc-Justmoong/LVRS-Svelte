@@ -43,10 +43,10 @@
 			</AppCard>
 
 			<AppCard title="Layout Sample" subtitle="Spacing and alignment token behavior check">
-				<HStack spacing={12} alignmentName="center">
+				<HStack spacing={12} alignment="center">
 					<LabelButton text="Primary" />
 					<LabelButton text="Default" tone="default" />
-					<Spacer axis="horizontal" minLength={16} />
+					<Spacer minLength={16} />
 					<Label variant="caption">navIndex: {navIndex}</Label>
 				</HStack>
 			</AppCard>

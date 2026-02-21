@@ -1,15 +1,13 @@
 <script lang="ts">
-	import type { SpacerAxis } from '../../types.js';
+	export let minLength: number | undefined = undefined;
 
-	export let minLength = 0;
-	export let axis: SpacerAxis = 'both';
+	$: resolvedMinLength = typeof minLength === 'number' ? `${minLength}px` : '0px';
 </script>
 
 <div
 	class="lvrs-spacer"
 	aria-hidden="true"
-	style={`--lvrs-spacer-min: ${minLength}px;`}
-	data-axis={axis}
+	style={`--lvrs-spacer-min: ${resolvedMinLength};`}
 ></div>
 
 <style>
@@ -19,15 +17,15 @@
 		min-height: 0;
 	}
 
-	.lvrs-spacer[data-axis='horizontal'] {
+	:global(.lvrs-hstack) > :global(.lvrs-spacer) {
 		min-width: var(--lvrs-spacer-min, 0px);
 	}
 
-	.lvrs-spacer[data-axis='vertical'] {
+	:global(.lvrs-vstack) > :global(.lvrs-spacer) {
 		min-height: var(--lvrs-spacer-min, 0px);
 	}
 
-	.lvrs-spacer[data-axis='both'] {
+	:global(.lvrs-zstack) > :global(.lvrs-spacer) {
 		min-width: var(--lvrs-spacer-min, 0px);
 		min-height: var(--lvrs-spacer-min, 0px);
 	}

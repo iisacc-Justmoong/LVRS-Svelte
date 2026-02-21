@@ -1,16 +1,23 @@
 <script lang="ts">
 	import type { HStackAlignment } from '../../types.js';
 
-	export let spacing = -1;
-	export let defaultSpacing = 8;
-	export let alignmentName: HStackAlignment = 'center';
-	export let wrap = false;
+	export let alignment: HStackAlignment = 'center';
+	export let spacing: number | undefined = undefined;
 
-	$: resolvedGap = spacing < 0 ? defaultSpacing : spacing;
-	$: alignItems = alignmentName === 'top' ? 'flex-start' : alignmentName === 'bottom' ? 'flex-end' : 'center';
+	$: resolvedGap = typeof spacing === 'number' ? `${spacing}px` : 'var(--lvrs-stack-system-spacing, 8px)';
+	$: alignItems =
+		alignment === 'top'
+			? 'flex-start'
+			: alignment === 'bottom'
+				? 'flex-end'
+				: alignment === 'firstTextBaseline'
+					? 'baseline'
+					: alignment === 'lastTextBaseline'
+						? 'last baseline'
+						: 'center';
 </script>
 
-<div class="lvrs-hstack" style={`--lvrs-stack-gap: ${resolvedGap}px; align-items: ${alignItems}; flex-wrap: ${wrap ? 'wrap' : 'nowrap'};`}>
+<div class="lvrs-hstack" style={`--lvrs-stack-gap: ${resolvedGap}; align-items: ${alignItems};`}>
 	<slot />
 </div>
 

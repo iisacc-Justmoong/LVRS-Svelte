@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ZStackAlignment } from '../../types.js';
 
-	export let alignmentName: ZStackAlignment = 'center';
+	export let alignment: ZStackAlignment = 'center';
 
 	const placementByAlignment: Record<ZStackAlignment, string> = {
 		topLeading: 'start start',
@@ -15,7 +15,7 @@
 		bottomTrailing: 'end end'
 	};
 
-	$: placement = placementByAlignment[alignmentName];
+	$: placement = placementByAlignment[alignment];
 </script>
 
 <div class="lvrs-zstack" style={`place-items: ${placement};`}>
