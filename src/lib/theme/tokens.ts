@@ -4,7 +4,10 @@ export type DeepPartial<T> = {
 
 export const lvrsWebCalibration = {
 	fontScale: 1.5,
-	iconSmPx: 22
+	iconSmPx: 22,
+	spacingScale: 1.2,
+	radiusScale: 1.15,
+	controlScale: 1.2
 } as const;
 
 function scaled(value: number, factor: number): number {
@@ -214,30 +217,30 @@ export const lvrsTheme: LvrsThemeTokens = {
 	},
 	radius: {
 		hairline: 0.5,
-		xs: 2,
-		sm: 4,
-		base: 6,
-		md: 8,
-		lg: 12,
-		xl: 16,
-		control: 5
+		xs: scaled(2, lvrsWebCalibration.radiusScale),
+		sm: scaled(4, lvrsWebCalibration.radiusScale),
+		base: scaled(6, lvrsWebCalibration.radiusScale),
+		md: scaled(8, lvrsWebCalibration.radiusScale),
+		lg: scaled(12, lvrsWebCalibration.radiusScale),
+		xl: scaled(16, lvrsWebCalibration.radiusScale),
+		control: scaled(5, lvrsWebCalibration.radiusScale)
 	},
 	spacing: {
 		gapNone: 0,
-		gap2: 2,
-		gap3: 3,
-		gap4: 4,
-		gap5: 5,
-		gap6: 6,
-		gap7: 7,
-		gap8: 8,
-		gap10: 10,
-		gap12: 12,
-		gap14: 14,
-		gap16: 16,
-		gap18: 18,
-		gap20: 20,
-		gap24: 24
+		gap2: scaled(2, lvrsWebCalibration.spacingScale),
+		gap3: scaled(3, lvrsWebCalibration.spacingScale),
+		gap4: scaled(4, lvrsWebCalibration.spacingScale),
+		gap5: scaled(5, lvrsWebCalibration.spacingScale),
+		gap6: scaled(6, lvrsWebCalibration.spacingScale),
+		gap7: scaled(7, lvrsWebCalibration.spacingScale),
+		gap8: scaled(8, lvrsWebCalibration.spacingScale),
+		gap10: scaled(10, lvrsWebCalibration.spacingScale),
+		gap12: scaled(12, lvrsWebCalibration.spacingScale),
+		gap14: scaled(14, lvrsWebCalibration.spacingScale),
+		gap16: scaled(16, lvrsWebCalibration.spacingScale),
+		gap18: scaled(18, lvrsWebCalibration.spacingScale),
+		gap20: scaled(20, lvrsWebCalibration.spacingScale),
+		gap24: scaled(24, lvrsWebCalibration.spacingScale)
 	},
 	stroke: {
 		hairline: 0.5,
@@ -245,19 +248,19 @@ export const lvrsTheme: LvrsThemeTokens = {
 		regular: 1.5
 	},
 	control: {
-		heightSm: 28,
-		heightMd: 44,
-		inputMinWidth: 180,
-		inputWidthMd: 206,
-		buttonMinWidth: 100,
-		dialogMinWidth: 280,
-		dialogMaxWidth: 360,
+		heightSm: scaled(28, lvrsWebCalibration.controlScale),
+		heightMd: scaled(44, lvrsWebCalibration.controlScale),
+		inputMinWidth: scaled(180, lvrsWebCalibration.controlScale),
+		inputWidthMd: scaled(206, lvrsWebCalibration.controlScale),
+		buttonMinWidth: scaled(100, lvrsWebCalibration.controlScale),
+		dialogMinWidth: scaled(280, lvrsWebCalibration.controlScale),
+		dialogMaxWidth: scaled(360, lvrsWebCalibration.controlScale),
 		iconSm: lvrsWebCalibration.iconSmPx,
 		indicatorSize: lvrsWebCalibration.iconSmPx,
-		toggleTrackWidth: 38,
+		toggleTrackWidth: scaled(38, lvrsWebCalibration.controlScale),
 		toggleTransitionDuration: 140,
-		headerMinHeight: 56,
-		headerExtraHeight: 32
+		headerMinHeight: scaled(56, lvrsWebCalibration.controlScale),
+		headerExtraHeight: scaled(32, lvrsWebCalibration.controlScale)
 	},
 	typography: {
 		fontBody: '"Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif',
