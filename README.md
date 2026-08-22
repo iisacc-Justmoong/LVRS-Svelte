@@ -27,10 +27,35 @@ npm run dev
 Type/package validation:
 
 ```bash
+npm test
 npm run check
 npm run prepack
 npm run pack:dry
 ```
+
+## Machine Installation
+
+Install the current checkout independently with the repository install script:
+
+```bash
+./install.sh
+```
+
+The script restores the locked dependencies, runs the tests, type checks, build, and package
+validation, writes the installable tarball under `build/`, and installs that tarball into the
+current npm global prefix. The installed package is a standalone copy rather than a symlink to
+this source tree, so moving or editing the checkout does not mutate the installed version. The
+already validated tarball is installed without rerunning package lifecycle scripts.
+
+Use a different npm prefix when needed:
+
+```bash
+LVRS_SVELTE_NPM_PREFIX="$HOME/.local" ./install.sh
+```
+
+For an already restored dependency tree, `LVRS_SVELTE_SKIP_DEPENDENCY_INSTALL=1` skips only
+`npm ci`; all tests and package validations still run. Re-running `install.sh` replaces the
+installed package with the current checkout version.
 
 ## Package Usage Example
 
