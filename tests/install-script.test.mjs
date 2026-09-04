@@ -14,7 +14,8 @@ test('install.sh builds, validates, and installs a copied global package', async
 	assert.match(installScript, /set -euo pipefail/);
 	assert.notEqual(installScriptStat.mode & 0o111, 0, 'install.sh must be executable');
 	assert.match(installScript, /BUILD_DIR="\$\{ROOT_DIR\}\/build"/);
-	assert.match(installScript, /LVRS_SVELTE_NPM_PREFIX/);
+	assert.ok(installScript.includes('NPM_PREFIX="${LVRS_SVELTE_NPM_PREFIX:-${HOME}/.local/SDK}"'));
+	assert.doesNotMatch(installScript, /npm config get prefix/);
 	assert.match(installScript, /npm ci/);
 	assert.match(installScript, /npm test/);
 	assert.match(installScript, /npm run check/);

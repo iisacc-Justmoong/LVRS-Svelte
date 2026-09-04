@@ -43,14 +43,14 @@ Install the current checkout independently with the repository install script:
 
 The script restores the locked dependencies, runs the tests, type checks, build, and package
 validation, writes the installable tarball under `build/`, and installs that tarball into the
-current npm global prefix. The installed package is a standalone copy rather than a symlink to
+`~/.local/SDK` npm prefix (`~/.local/SDK/lib/node_modules/lvrs-svelte`). The checkout belongs under `Workspace/SDK/LVRS-Svelte`. The installed package is a standalone copy rather than a symlink to
 this source tree, so moving or editing the checkout does not mutate the installed version. The
 already validated tarball is installed without rerunning package lifecycle scripts.
 
 Use a different npm prefix when needed:
 
 ```bash
-LVRS_SVELTE_NPM_PREFIX="$HOME/.local" ./install.sh
+LVRS_SVELTE_NPM_PREFIX="$HOME/custom-sdk" ./install.sh
 ```
 
 For an already restored dependency tree, `LVRS_SVELTE_SKIP_DEPENDENCY_INSTALL=1` skips only

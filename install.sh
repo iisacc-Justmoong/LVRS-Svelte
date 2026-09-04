@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 BUILD_DIR="${ROOT_DIR}/build"
-NPM_PREFIX="${LVRS_SVELTE_NPM_PREFIX:-}"
+NPM_PREFIX="${LVRS_SVELTE_NPM_PREFIX:-${HOME}/.local/SDK}"
 SKIP_DEPENDENCY_INSTALL="${LVRS_SVELTE_SKIP_DEPENDENCY_INSTALL:-0}"
 
 require_command() {
@@ -29,10 +29,6 @@ node_major="$(node -p "Number(process.versions.node.split('.')[0])")"
 if ((node_major < 20)); then
 	echo "LVRS-Svelte requires Node.js 20 or newer; current version is $(node --version)." >&2
 	exit 1
-fi
-
-if [[ -z "${NPM_PREFIX}" ]]; then
-	NPM_PREFIX="$(npm config get prefix)"
 fi
 
 if [[ -z "${NPM_PREFIX}" || "${NPM_PREFIX}" == "null" || "${NPM_PREFIX}" == "undefined" ]]; then
