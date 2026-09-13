@@ -6,7 +6,7 @@
 	export let cellHeight = 24;
 	export let contentSpacing = 8;
 	export let dividerColor = 'var(--lvrs-color-panel-bg03, #1F1F20)';
-	export let textColor = 'var(--lvrs-color-text-body, #CCFFFFFF)';
+	export let textColor = 'var(--lvrs-color-text-body, #FFFFFFCC)';
 	export let showDivider = true;
 	export let textStyle: import('../../types.js').LabelVariant = 'body';
 
@@ -15,7 +15,7 @@
 		: text;
 </script>
 
-<div class="lvrs-table-cell" style={`--lvrs-cell-h:${cellHeight}px; --lvrs-cell-gap:${contentSpacing}px; --lvrs-cell-divider:${dividerColor};`}>
+<div class="lvrs-table-cell" role="cell" style={`--lvrs-cell-h:${cellHeight}px; --lvrs-cell-gap:${contentSpacing}px; --lvrs-cell-divider:${dividerColor};`}>
 	{#if showDivider}
 		<div class="divider"></div>
 	{/if}

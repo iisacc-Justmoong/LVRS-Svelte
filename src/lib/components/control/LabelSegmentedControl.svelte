@@ -1,37 +1,25 @@
 <script lang="ts">
-	import LabelButton from './LabelButton.svelte';
-
-	interface LabelSegmentItem {
-		id?: string | number;
-		text: string;
-		disabled?: boolean;
-	}
-
-	export let items: LabelSegmentItem[] = [];
-	export let activeIndex = -1;
-	export let forceBorderlessTone = true;
+  import { interactionMotion } from '../../motion.js';
+  import Icon from './Icon.svelte';
+  export let items: Array<{id?: string | number; text: string; iconName?: string; disabled?: boolean}> = [];
+  export let activeIndex = 0;
+  export let label = 'Choose a view';
+  export let iconOnly = false;
+  function key(event: KeyboardEvent, index: number) {
+    if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key)) return;
+    event.preventDefault();
+    const enabled = items.map((item, i) => item.disabled ? -1 : i).filter(i => i >= 0);
+    if (!enabled.length) return;
+    const direction = event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 1;
+    const next = event.key === 'Home' ? enabled[0] : event.key === 'End' ? enabled[enabled.length - 1] : enabled[(enabled.indexOf(index) + direction + enabled.length) % enabled.length];
+    activeIndex = next;
+    (event.currentTarget as HTMLElement).parentElement?.querySelectorAll<HTMLButtonElement>('button')[next]?.focus();
+  }
 </script>
-
-<div class="lvrs-segmented label">
-	{#each items as item, index (item.id ?? index)}
-		<LabelButton
-			text={item.text}
-			tone={forceBorderlessTone ? 'default' : index === activeIndex ? 'primary' : 'default'}
-			disabled={!!item.disabled}
-			on:click={() => (activeIndex = index)}
-		/>
-	{/each}
-	<slot />
+<div {...$$restProps} class="lvrs-segments" role="radiogroup" aria-label={label}>
+  {#each items as item, index (item.id ?? index)}
+    <button type="button" class="lvrs-segment" role="radio" aria-label={item.text} aria-checked={index === activeIndex} disabled={item.disabled} tabindex={index === activeIndex || (activeIndex < 0 && index === 0) ? 0 : -1} on:click={() => activeIndex = index} on:keydown={(event) => key(event, index)} use:interactionMotion={!item.disabled}>
+      <span class="lvrs-motion-visual">{#if item.iconName}<Icon name={item.iconName} />{/if}{#if !iconOnly}{item.text}{/if}</span>
+    </button>
+  {/each}
 </div>
-
-<style>
-	.lvrs-segmented {
-		display: inline-flex;
-		align-items: center;
-		padding: var(--lvrs-gap-4, 4px);
-		gap: var(--lvrs-gap-2, 2px);
-		border: 2px solid var(--lvrs-color-panel-bg12, #3C3E3F);
-		border-radius: var(--lvrs-radius-md, 8px);
-		background: var(--lvrs-color-panel-bg08, #2C2E2F);
-	}
-</style>

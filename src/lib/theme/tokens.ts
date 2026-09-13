@@ -3,11 +3,11 @@ export type DeepPartial<T> = {
 };
 
 export const lvrsWebCalibration = {
-	fontScale: 1.5,
-	iconSmPx: 22,
-	spacingScale: 1.2,
-	radiusScale: 1.15,
-	controlScale: 1.2
+	fontScale: 1,
+	iconSmPx: 18,
+	spacingScale: 1,
+	radiusScale: 1,
+	controlScale: 1
 } as const;
 
 function scaled(value: number, factor: number): number {
@@ -169,32 +169,32 @@ export const lvrsTheme: LvrsThemeTokens = {
 	colors: {
 		window: '#141414',
 		panel: {
-			background01: '#1B1B1C',
-			background02: '#1D1D1D',
-			background03: '#1F1F20',
-			background04: '#212223',
-			background05: '#242525',
-			background06: '#262728',
-			background07: '#292A2B',
-			background08: '#2C2E2F',
-			background09: '#303232',
-			background10: '#343536',
-			background11: '#373A3B',
-			background12: '#3C3E3F'
+			background01: '#0C0C0D',
+			background02: '#0E0E0E',
+			background03: '#151516',
+			background04: '#181919',
+			background05: '#1D1E1E',
+			background06: '#1F2021',
+			background07: '#242424',
+			background08: '#232424',
+			background09: '#262727',
+			background10: '#282828',
+			background11: '#2D2E2F',
+			background12: '#313233'
 		},
 		surface: {
-			windowAlt: '#1F1F20',
-			subSurface: '#212223',
-			surfaceSolid: '#242525',
-			surfaceAlt: '#262728',
-			surfaceGhost: '#1D1D1D'
+			windowAlt: '#151516',
+			subSurface: '#181919',
+			surfaceSolid: '#1D1E1E',
+			surfaceAlt: '#1F2021',
+			surfaceGhost: '#0E0E0E'
 		},
 		text: {
-			titleHeader: '#E5FFFFFF',
-			body: '#CCFFFFFF',
-			description: '#99FFFFFF',
-			caption: '#80FFFFFF',
-			disabled: '#4DFFFFFF'
+			titleHeader: 'rgba(255, 255, 255, 0.9)',
+			body: 'rgba(255, 255, 255, 0.8)',
+			description: 'rgba(255, 255, 255, 0.6)',
+			caption: 'rgba(255, 255, 255, 0.5)',
+			disabled: 'rgba(255, 255, 255, 0.3)'
 		},
 		semantic: {
 			primary: '#0A84FF',
@@ -204,15 +204,15 @@ export const lvrsTheme: LvrsThemeTokens = {
 			danger: '#FF453A'
 		},
 		overlay: {
-			backdrop: '#59000000',
-			primary: '#400A84FF',
-			danger: '#59FF453A'
+			backdrop: '#00000059',
+			primary: '#0A84FF40',
+			danger: '#FF453A59'
 		},
 		contextMenu: {
-			surface: '#1F1F20',
-			divider: '#2C2E2F',
+			surface: '#151516',
+			divider: '#232424',
 			itemSelectedBackground: '#0A84FF',
-			itemInactiveBackground: '#2C2E2F'
+			itemInactiveBackground: '#232424'
 		}
 	},
 	radius: {
@@ -248,8 +248,8 @@ export const lvrsTheme: LvrsThemeTokens = {
 		regular: 1.5
 	},
 	control: {
-		heightSm: scaled(28, lvrsWebCalibration.controlScale),
-		heightMd: scaled(44, lvrsWebCalibration.controlScale),
+		heightSm: scaled(22, lvrsWebCalibration.controlScale),
+		heightMd: scaled(36, lvrsWebCalibration.controlScale),
 		inputMinWidth: scaled(180, lvrsWebCalibration.controlScale),
 		inputWidthMd: scaled(206, lvrsWebCalibration.controlScale),
 		buttonMinWidth: scaled(100, lvrsWebCalibration.controlScale),
@@ -290,9 +290,9 @@ export const lvrsTheme: LvrsThemeTokens = {
 			letterSpacing: 0
 		},
 		body: {
-			size: scaled(12, lvrsWebCalibration.fontScale),
+			size: scaled(13, lvrsWebCalibration.fontScale),
 			weight: 500,
-			lineHeight: scaled(12, lvrsWebCalibration.fontScale),
+			lineHeight: scaled(13, lvrsWebCalibration.fontScale),
 			letterSpacing: 0
 		},
 		description: {

@@ -17,7 +17,15 @@ export { default as TableCellItem } from './TableCellItem.svelte';
 export { default as AbstractInputBar } from './AbstractInputBar.svelte';
 export { default as InputField } from './InputField.svelte';
 export { default as CodeEditor } from './CodeEditor.svelte';
-export { default as InputMethodGuard } from './InputMethodGuard.svelte';
-export { default as WheelScrollGuard } from './WheelScrollGuard.svelte';
 
 export type { LabelAlign, LabelButtonTone, LabelVariant } from '../../types.js';
+export { default as PushButton } from './PushButton.svelte';
+export { default as Icon } from './Icon.svelte';
+export { default as HelpButton } from './HelpButton.svelte';
+export { default as DropdownButton } from './DropdownButton.svelte';
+export { default as TextEditor } from './TextEditor.svelte';
+export { default as Slider } from './Slider.svelte';
+export { default as Stepper } from './Stepper.svelte';
+export { default as ComboBox } from './ComboBox.svelte';
+export { default as ColorPicker } from './ColorPicker.svelte';
+export { default as ColorPickerButton } from './ColorPickerButton.svelte';

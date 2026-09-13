@@ -10,8 +10,10 @@ export { default as ListItem } from './ListItem.svelte';
 export { default as ListToolbar } from './ListToolbar.svelte';
 export { default as MenuDivider } from './MenuDivider.svelte';
 export { default as MenuItem } from './MenuItem.svelte';
-export { default as Navigator } from './Navigator.svelte';
-export { default as PageRouter } from './PageRouter.svelte';
 export { default as ToolbarButton } from './ToolbarButton.svelte';
 
-export * as NavigatorApi from './navigator.js';
+export { default as Menu } from './Menu.svelte';
+export { default as ContextMenuItem } from './ContextMenuItem.svelte';
+export { default as ContextMenuDivider } from './ContextMenuDivider.svelte';
+export { default as ListItemSelector } from './ListItemSelector.svelte';
+export { default as ListItemComposite } from './ListItemComposite.svelte';

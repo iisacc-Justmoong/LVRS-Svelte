@@ -57,7 +57,7 @@
 					label={itemLabel(item)}
 					selected={(item?.selected ?? false) || index === selectedIndex}
 					disabled={!interactive || !itemEnabled(item)}
-					on:click={() => dispatch('itemTriggered', { index, item })}
+					on:click={() => { selectedIndex = index; dispatch('itemTriggered', { index, item }); }}
 				/>
 			</div>
 		{/each}

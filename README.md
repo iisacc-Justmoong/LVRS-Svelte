@@ -1,104 +1,71 @@
 # LVRS-Svelte
 
-This repository prepares the Svelte migration of the LVRS (QML) framework for NPM distribution.  
-The current phase focuses on establishing a publishable baseline and a stable starting API for core tokens/components.
+LVRS visual components, materials and elastic interaction for Svelte 5.
+This release follows LVRS source `953189f1217b8eab6ec0abba23c8ad5dc6a43ef2` (2026-09-13).
 
-## Current Scope
-
-- Svelte library packaging (`@sveltejs/package`) is configured
-- NPM publishing metadata, scripts, and validation scripts are configured
-- Initial Svelte migration draft for LVRS theme tokens is implemented
-- Initial component set is provided
-  - app: `ApplicationWindow`, `AppShell`
-  - layout: `HStack`, `VStack`, `ZStack`, `Spacer`
-  - control: `Label`, `LabelButton`
-  - surfaces: `AppCard`, `Alert`
-- Preview page (`src/routes/+page.svelte`) is included
-
-For detailed migration coverage, see `docs/migration-status.md`.
-
-## Local Development
-
-```bash
-npm install
-npm run dev
+```sh
+npm install lvrs-svelte
 ```
-
-Type/package validation:
-
-```bash
-npm test
-npm run check
-npm run prepack
-npm run pack:dry
-```
-
-## Machine Installation
-
-Install the current checkout independently with the repository install script:
-
-```bash
-./install.sh
-```
-
-The script restores the locked dependencies, runs the tests, type checks, build, and package
-validation, writes the installable tarball under `build/`, and installs that tarball into the
-`~/.local/SDK` npm prefix (`~/.local/SDK/lib/node_modules/lvrs-svelte`). The checkout belongs under `Workspace/SDK/LVRS-Svelte`. The installed package is a standalone copy rather than a symlink to
-this source tree, so moving or editing the checkout does not mutate the installed version. The
-already validated tarball is installed without rerunning package lifecycle scripts.
-
-Use a different npm prefix when needed:
-
-```bash
-LVRS_SVELTE_NPM_PREFIX="$HOME/custom-sdk" ./install.sh
-```
-
-For an already restored dependency tree, `LVRS_SVELTE_SKIP_DEPENDENCY_INSTALL=1` skips only
-`npm ci`; all tests and package validations still run. Re-running `install.sh` replaces the
-installed package with the current checkout version.
-
-## Package Usage Example
 
 ```svelte
 <script>
-	import { AppCard, Label } from 'lvrs-svelte';
+  import { PushButton, PanelMaterial, InputField, Card } from 'lvrs-svelte';
+  let title = '';
 </script>
 
-<AppCard title="Card">
-	<Label variant="body">Hello LVRS</Label>
-</AppCard>
+<PanelMaterial>
+  <InputField label="Project name" bind:text={title} />
+  <PushButton text="Create project" size="medium" on:click={() => console.log(title)} />
+</PanelMaterial>
+<Card type="link" title="Documentation" href="/docs" actionText="Read docs" />
 ```
 
-`LvrsThemeProvider` and `ApplicationWindow` are optional.
-Default LVRS theme variables are automatically installed at package import time, so components can be used directly.
+CSS is imported with the package and is available during SSR. A theme provider and browser
+initialization are unnecessary. `lvrs-svelte/theme.css` and `lvrs-svelte/styles.css` are also
+explicit exports. All build output lives under `build/`.
 
-Optional global theme override:
+## Visual scope
+
+59 public components cover buttons, labels, inputs, selection, progress, tables, lists, hierarchy,
+menus, cards, dialogs, sheets, popovers, tooltips and materials. See [component reference](docs/components.md).
+ApplicationWindow, AppShell, HStack, VStack, ZStack, Spacer, PageRouter and Navigator were removed
+in 0.2.0. Use native HTML/CSS and your application's router to compose these visual components.
+
+Authored metrics are unscaled: body 13px, icons 18px, compact controls 22px. Medium (36px) and
+large (44px) buttons are explicit options for web and touch surfaces. Panel colors and CSS alpha
+are derived from the current LVRS tokens. Panel materials support dense (75%, 64px blur), glass
+(25%, 16px blur) and solid coatings. Web backdrop blur is a CSS approximation of native LVRS materials.
+
+## Motion and accessibility
+
+Controls share a bounded 90ms press, 160ms hover and 360ms elastic release. Their visual child
+animates independently from the hit area. Surfaces enter over 420ms and dialogs exit over 150ms.
+`prefers-reduced-motion` is respected. Explicit preferences are supported:
 
 ```js
-import { applyLvrsTheme } from 'lvrs-svelte';
-
-applyLvrsTheme({
-	colors: {
-		semantic: {
-			primary: '#2ED3A0'
-		}
-	}
-});
+import { setMotionOptions } from 'lvrs-svelte';
+setMotionOptions({ reducedMotion: true, speed: 1 });
 ```
 
-## NPM Publishing Procedure
+Native form controls preserve name/value, disabled, validation and keyboard behavior. Segments
+use arrow/Home/End keys; menus skip disabled items and support Escape; native dialogs provide
+focus trapping, background inertness, Escape dismissal and focus restoration.
 
-1. Update `name`, `version`, and `repository` in `package.json` according to your release policy.
-2. Run and pass the validations below.
-   - `npm run check`
-   - `npm run prepack`
-   - `npm run pack:dry`
-3. Verify npm login state.
-   - `npm whoami`
-4. Publish publicly.
-   - `npm publish --access public`
+## Development and verification
 
-## Notes
+```sh
+npm ci
+npm test
+npm run check
+npm run build
+npm run dev
+npm pack --ignore-scripts --pack-destination build
+```
 
-- This repository follows the original LVRS license policy and uses `AGPL-3.0-only`.
-- Not all original QML features are migrated yet. The current implementation is a readiness phase for API stabilization and publish infrastructure.
+The build emits a standalone static catalog at `build/catalog` and the typed npm package at
+`build/package`. `npm test` validates token fidelity, motion bounds and SSR for every public
+component. See [release verification](docs/verification.md) for browser scenarios.
+
+The package uses Svelte as its only runtime peer and adds no runtime component dependency.
+It uses browser-native input, select, dialog and details behavior, Svelte reactivity/transitions,
+and the official Svelte packaging toolchain. AGPL-3.0-only; see LICENSE and NOTICE.md.

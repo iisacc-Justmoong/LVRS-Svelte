@@ -5,7 +5,7 @@
 	export let columns: any[] = ['Column', 'Column', 'Column'];
 	export let rowHeight = 24;
 	export let cellHorizontalPadding = 8;
-	export let textColor = 'var(--lvrs-color-text-description, #99FFFFFF)';
+	export let textColor = 'var(--lvrs-color-text-description, #FFFFFF99)';
 	export let separatorHeight = 1;
 	export let separatorColor = 'var(--lvrs-color-panel-bg10, #343536)';
 
@@ -20,10 +20,10 @@
 	);
 </script>
 
-<div class="lvrs-table-header" style={`--lvrs-header-row-h:${rowHeight}px; --lvrs-header-sep-h:${separatorHeight}px; --lvrs-header-sep:${separatorColor};`}>
-	<div class="row">
+<div class="lvrs-table-header" role="rowgroup" style={`--lvrs-header-row-h:${rowHeight}px; --lvrs-header-sep-h:${separatorHeight}px; --lvrs-header-sep:${separatorColor};`}>
+	<div class="row" role="row">
 		{#each normalized as col, idx (idx)}
-			<div class="cell" style={`padding-left:${Math.max(0, col.contentSpacing)}px;`}>
+			<div class="cell" role="columnheader" style={`padding-left:${Math.max(0, col.contentSpacing)}px;`}>
 				<Label variant="description" color={textColor} truncate={true} block={true}>{col.label}</Label>
 			</div>
 		{/each}

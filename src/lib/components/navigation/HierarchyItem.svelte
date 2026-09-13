@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import Label from '../control/Label.svelte';
+  import Icon from '../control/Icon.svelte';
+  import { interactionMotion } from '../../motion.js';
 
 	export let itemId: number | string = -1;
 	export let itemKey = '';
@@ -13,13 +15,12 @@
 	export let selected = false;
 	export let indentLevel = 0;
 	export let indentStep = 13;
-	export let rowHeight = 28;
-	export let iconSize = 22;
+	export let rowHeight = 24;
+	export let iconSize = 18;
 	export let disabled = false;
 
 	const dispatch = createEventDispatcher<{ activate: void; toggle: void }>();
 
-	$: glyph = iconGlyph || (iconName.length > 0 ? iconName.slice(0, 1).toUpperCase() : '■');
 	$: leftPad = 8 + Math.max(0, indentLevel) * indentStep;
 </script>
 
@@ -29,18 +30,18 @@
 	data-item-id={String(itemId)}
 	data-item-key={itemKey}
 >
-	<button type="button" class="main" disabled={disabled} on:click={() => dispatch('activate')}>
-		<span class="icon-wrap">
+	<button type="button" class="main" disabled={disabled} aria-pressed={selected} use:interactionMotion={!disabled} on:click={() => dispatch('activate')}>
+		<span class="icon-wrap lvrs-motion-visual">
 			{#if iconSource.length > 0}
 				<img src={iconSource} alt={iconName || label} class="icon" />
 			{:else}
-				<span class="icon-glyph">{glyph}</span>
+				{#if iconGlyph}<span class="icon-glyph" aria-hidden="true">{iconGlyph}</span>{:else}<Icon name={iconName} size={iconSize} />{/if}
 			{/if}
 		</span>
 		<Label variant="body" truncate={true}>{label}</Label>
 	</button>
 	{#if showChevron}
-		<button type="button" class="chevron" disabled={disabled} on:click={() => dispatch('toggle')}>
+		<button type="button" class="chevron" disabled={disabled} aria-label={`${expanded ? 'Collapse' : 'Expand'} ${label}`} aria-expanded={expanded} on:click={() => dispatch('toggle')}>
 			{expanded ? '▾' : '▸'}
 		</button>
 	{/if}
@@ -93,6 +94,6 @@
 	}
 
 	.selected {
-		background: var(--lvrs-color-overlay-primary, #400A84FF);
+		background: var(--lvrs-color-overlay-primary, #0A84FF40);
 	}
 </style>

@@ -1,68 +1,48 @@
 <script lang="ts">
-	import {
-		Alert,
-		AppCard,
-		ApplicationWindow,
-		HStack,
-		Label,
-		LabelButton,
-		LvrsThemeProvider,
-		Spacer,
-		VStack
-	} from '../lib/index.js';
-
-	let navIndex = 0;
-	let alertOpen = false;
-
-	const navItems = [
-		{ label: 'Overview', subtitle: 'Current package status' },
-		{ label: 'Tokens', subtitle: 'Theme and typography' },
-		{ label: 'Roadmap', subtitle: 'QML to Svelte migration' }
-	];
+  import * as LV from '../lib/index.js';
+  let checked = true;
+  let switchOn = true;
+  let selection = 0;
+  let radio: string | number | undefined = 'one';
+  let input = '';
+  let text = 'Ideas become useful when you can work with them.';
+  let code = "import { PushButton } from 'lvrs-svelte';";
+  let value = 38;
+  let quantity = 2;
+  let color = '#0a84ff';
+  let choice = 'Design';
+  let modalOpen = false;
+  let sheetOpen = false;
+  let alertOpen = false;
+  let menuOpen = false;
+  let menuX = 0;
+  let menuY = 0;
+  let result = 'Ready';
+  let reducedMotion = false;
+  let clicks = 0;
+  $: LV.setMotionOptions({reducedMotion});
+  const cardTypes = ['file', 'folder', 'project', 'device', 'model', 'member', 'link', 'filePreview'] as const;
+  const names = Object.keys(LV).filter(name => /^[A-Z]/.test(name)).sort();
 </script>
 
-<LvrsThemeProvider as="main">
-	<ApplicationWindow
-		title="LVRS-Svelte"
-		subtitle="NPM publishing readiness preview"
-		{navItems}
-		bind:navIndex
-	>
-		<HStack slot="header-actions" spacing={8}>
-			<LabelButton text="Preview Alert" on:click={() => (alertOpen = true)} />
-		</HStack>
-
-		<VStack spacing={16}>
-			<AppCard title="Current Implementation Scope" subtitle="Components included in the initial readiness phase">
-				<VStack spacing={8}>
-					<Label variant="body" block={true}>app: ApplicationWindow, AppShell</Label>
-					<Label variant="body" block={true}>layout: HStack, VStack, ZStack, Spacer</Label>
-					<Label variant="body" block={true}>control: Label, LabelButton</Label>
-					<Label variant="body" block={true}>surfaces: AppCard, Alert</Label>
-				</VStack>
-			</AppCard>
-
-			<AppCard title="Layout Sample" subtitle="Spacing and alignment token behavior check">
-				<HStack spacing={12} alignment="center">
-					<LabelButton text="Primary" />
-					<LabelButton text="Default" tone="default" />
-					<Spacer minLength={16} />
-					<Label variant="caption">navIndex: {navIndex}</Label>
-				</HStack>
-			</AppCard>
-		</VStack>
-	</ApplicationWindow>
-
-	<Alert
-		bind:open={alertOpen}
-		buttonCount={3}
-		title="LVRS Alert"
-		message="The Svelte migration foundation is working as expected."
-		primaryText="Confirm"
-		secondaryText="Defer"
-		tertiaryText="Close"
-		on:primaryClicked={() => (alertOpen = false)}
-		on:secondaryClicked={() => (alertOpen = false)}
-		on:tertiaryClicked={() => (alertOpen = false)}
-	/>
-</LvrsThemeProvider>
+<svelte:head><title>LVRS-Svelte — Visual catalog</title><meta name="description" content="Interactive reference for LVRS Svelte visual components, materials and elastic motion." /></svelte:head>
+<div class="catalog">
+  <aside><a class="brand" href="#top">LVRS<span>Svelte</span></a><p>Visual component library<br />0.2.1</p><nav aria-label="Catalog sections"><a href="#buttons">Buttons</a><a href="#inputs">Inputs & selection</a><a href="#surfaces">Materials & overlays</a><a href="#cards">Cards</a><a href="#data">Lists & tables</a><a href="#api">API index</a></nav><LV.ToggleSwitch text="Reduce motion" bind:checked={reducedMotion} /></aside>
+  <main id="top">
+    <header><span class="eyebrow">LVRS / WEB</span><h1>Familiar controls.<br /><span>A little more feeling.</span></h1><p>Authored LVRS dimensions, dark materials, and one elastic interaction language. Every example below is a real Svelte component.</p><code>npm install lvrs-svelte</code></header>
+    <section id="buttons"><div class="section-head"><h2>Buttons</h2><p>90 ms press · 360 ms release · keyboard focus · fixed hit area</p></div><LV.PanelMaterial><div class="row"><LV.PushButton text="Primary" on:click={() => clicks += 1} /><LV.LabelButton text="Default" tone="default" on:click={() => clicks += 1} /><LV.PushButton text="Borderless" tone="borderless" /><LV.PushButton text="Destructive" tone="destructive" /><LV.PushButton text="Disabled" disabled /><LV.IconButton iconName="generaladd" text="Add" /><LV.Tooltip text="A keyboard-accessible tooltip"><LV.HelpButton text="Help" /></LV.Tooltip><LV.PushButton text="Selected" checkable checked /><LV.PushButton text="Go to cards" href="#cards" /></div><p class="feedback" role="status">Button clicks: {clicks}</p></LV.PanelMaterial><div class="row sizes"><LV.PushButton text="22px" /><LV.PushButton text="36px" size="medium" /><LV.PushButton text="44px" size="large" /></div></section>
+    <section id="inputs"><div class="section-head"><h2>Inputs & selection</h2><p>Native form behavior with visible labels, bounds and focus rings.</p></div><div class="two"><LV.PanelMaterial><div class="stack"><LV.InputField label="Search components" mode="search" placeholderText="Type a component name" bind:text={input} /><LV.TextEditor label="Notes" bind:text /><LV.CodeEditor label="Code" bind:text={code} /><LV.ComboBox label="Workspace" items={['Design','Development','Store']} bind:value={choice} /><LV.Stepper label="Quantity" from={0} to={5} bind:value={quantity} /><LV.ColorPicker bind:value={color} /></div></LV.PanelMaterial><LV.PanelMaterial><div class="stack"><LV.CheckBox text="Include interactions" bind:checked /><LV.CheckBox text="Some selected" indeterminate /><LV.CheckBox text="Unavailable option" disabled /><LV.ToggleSwitch text="Elastic motion" bind:checked={switchOn} /><div class="row"><LV.RadioButton text="One" name="example" value="one" bind:group={radio} /><LV.RadioButton text="Two" name="example" value="two" bind:group={radio} /></div><LV.LabelSegmentedControl items={[{text:'Overview'},{text:'Details'},{text:'Disabled',disabled:true}]} bind:activeIndex={selection} /><LV.IconSegmentedControl label="Icon view" items={[{text:'Add',iconName:'generaladd'},{text:'Search',iconName:'generalsearch'}]} /><LV.Slider label="Intensity" bind:value /><LV.ProgressBar {value} /><p class="feedback" role="status">{checked ? 'Included' : 'Excluded'} · {quantity} items · {choice} · {radio} · tab {selection}</p></div></LV.PanelMaterial></div></section>
+    <section id="surfaces"><div class="section-head"><h2>Materials & overlays</h2><p>75% dense / 25% glass. Dialogs trap focus and restore the trigger.</p></div><div class="materials"><LV.PanelMaterial><h3>Panel / Dense</h3><p>64px backdrop blur, 12px corners.</p></LV.PanelMaterial><LV.WindowMaterial material="glass"><h3>Window / Glass</h3><p>16px backdrop blur, 16px corners.</p></LV.WindowMaterial></div><div class="row sizes"><LV.PushButton text="Open modal" on:click={() => modalOpen = true} /><LV.PushButton text="Open sheet" on:click={() => sheetOpen = true} /><LV.PushButton text="Open alert" on:click={() => alertOpen = true} /><LV.PushButton text="Open context menu" on:click={(event) => {menuX = event.detail.clientX; menuY = event.detail.clientY; menuOpen = true;}} /><LV.Popover text="Open popover"><p>Local settings</p><LV.ToggleSwitch text="Show previews" checked /></LV.Popover></div><p class="feedback" role="status">{result}</p></section>
+    <section id="cards"><div class="section-head"><h2>Cards</h2><p>File, preview, folder, project, device, model, member and link. Selection changes are visible.</p></div><div class="cards">{#each cardTypes as type}<LV.Card {type} title={type === 'filePreview' ? 'Preview' : type[0].toUpperCase() + type.slice(1)} description="A reusable LVRS visual surface." metadata="LVRS / CARD" selectable={type !== 'filePreview'} detail="detailed" progress={64} rows={[{label:'Updated',value:'Today'}]} actionText={type === 'link' ? 'Visit' : ''} />{/each}</div></section>
+    <section id="data"><div class="section-head"><h2>Lists & tables</h2><p>Compact data, list selection and nested disclosure.</p></div><div class="two"><LV.PanelMaterial><LV.ListItem label="Design system" iconName="generalprojectStructure" detail="Active" selected /><LV.ListItemSelector label="Select this row" /><LV.ListItemComposite label="Expand resources"><LV.ListItem label="Icons" /><LV.ListItem label="Materials" /></LV.ListItemComposite><LV.ListItem label="Disabled item" disabled /></LV.PanelMaterial><LV.Table headerColumns={['Component','Status']} rows={[["PushButton","Ready"],["Card","Ready"],["InputField","Ready"]]} /></div></section>
+    <section id="api"><div class="section-head"><h2>Public API</h2><p>{names.length} visual components. ApplicationWindow, layout stacks and routers are outside this package.</p></div><div class="api">{#each names as name}<code>{name}</code>{/each}</div></section>
+    <footer>LVRS-Svelte · AGPL-3.0-only · iisacc</footer>
+  </main>
+</div>
+<LV.Modal bind:open={modalOpen} title="A focused moment"><LV.InputField label="Project name" placeholderText="Untitled project" /><div class="lvrs-dialog__actions" slot="actions"><LV.PushButton text="Done" on:click={() => modalOpen = false} /></div></LV.Modal>
+<LV.Sheet bind:open={sheetOpen} title="Project details"><LV.TextEditor label="Description" /><div class="lvrs-dialog__actions" slot="actions"><LV.PushButton text="Save details" on:click={() => {sheetOpen = false; result = 'Details saved';}} /></div></LV.Sheet>
+<LV.Alert bind:open={alertOpen} title="Keep this change?" message="This is a preview. No account or server data will be changed." primaryText="Keep change" on:primaryClicked={() => {alertOpen = false; result = 'Change kept';}} />
+<LV.ContextMenu bind:open={menuOpen} x={menuX} y={menuY} items={[{label:'Open',id:'open'},{label:'Unavailable',disabled:true},{label:'Duplicate',id:'duplicate'}]} on:itemTriggered={(event) => result = `${event.detail.index === 0 ? 'Open' : 'Duplicate'} selected`} />
+<style>
+  :global(html){scroll-behavior:smooth;color-scheme:dark;background:#0d0d0e} :global(body){margin:0;font-family:var(--lvrs-font-body);color:var(--lvrs-color-text-body)} :global(*){box-sizing:border-box} .catalog{max-width:1500px;margin:auto;display:grid;grid-template-columns:230px 1fr} aside{position:sticky;top:0;height:100vh;padding:42px 24px;background:#111112} .brand{font-size:30px;font-weight:800;color:#eee;text-decoration:none} .brand span{font-size:12px;color:#888;margin-left:8px} aside p{font-size:12px;line-height:1.7;color:#888} nav{display:grid;gap:18px;margin:44px 0} nav a{color:#aaa;text-decoration:none;font-size:13px} nav a:hover{color:white} main{min-width:0;padding:60px 48px} header{margin-bottom:80px;max-width:660px} .eyebrow{font-size:11px;letter-spacing:.16em;color:#0a84ff} h1{font-size:clamp(38px,5vw,64px);letter-spacing:-.05em;line-height:1.05;color:#eee;font-weight:600} h1 span{color:#777} header p{max-width:520px;line-height:1.8;color:#aaa;font-size:15px} header code{display:inline-block;background:#222;padding:12px 16px;border-radius:8px;margin-top:14px} section{margin-bottom:64px;scroll-margin-top:24px} .section-head{margin-bottom:22px}.section-head h2{font-size:22px;letter-spacing:-.02em;color:#eee} .section-head p,.materials p{font-size:12px;color:#888;line-height:1.6}.row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.sizes{margin-top:20px}.stack{display:grid;gap:20px}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.materials{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px;background:radial-gradient(ellipse at 25% 80%,#123c74,transparent),radial-gradient(ellipse at 80% 15%,#65432a,transparent);border-radius:16px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feedback{font:12px ui-monospace,monospace;color:#85858a;margin:20px 0 0}.api{display:flex;flex-wrap:wrap;gap:8px}.api code{font-size:11px;background:#202021;padding:8px;border-radius:5px}footer{font-size:12px;color:#666;margin-top:80px}@media(max-width:850px){.catalog{grid-template-columns:1fr}aside{position:static;height:auto;padding:20px}nav{display:flex;flex-wrap:wrap;margin:20px 0}.two{grid-template-columns:1fr}main{padding:36px 22px}.cards{grid-template-columns:1fr 1fr}}@media(max-width:480px){.cards,.materials{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}}
+</style>

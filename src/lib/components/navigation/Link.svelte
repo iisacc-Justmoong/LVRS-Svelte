@@ -1,54 +1,7 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { activeRouter } from './navigator.js';
-
-	export let href = '/';
-	export let to = href;
-	export let params: Record<string, unknown> = {};
-	export let replace = false;
-	export let targetComponent: any = null;
-	export let disabled = false;
-	export let underline = false;
-
-	const dispatch = createEventDispatcher<{ click: MouseEvent }>();
-
-	function onClick(event: MouseEvent): void {
-		if (disabled) {
-			event.preventDefault();
-			event.stopPropagation();
-			return;
-		}
-		const router = activeRouter();
-		if (router) {
-			event.preventDefault();
-			if (targetComponent) {
-				if (replace) router.replaceWith?.(targetComponent, params);
-				else router.goTo?.(targetComponent, params);
-			} else if (to) {
-				if (replace) router.replace?.(to, params);
-				else router.go?.(to, params);
-			}
-		}
-		dispatch('click', event);
-	}
+  import { interactionMotion } from '../../motion.js';
+  export let href = '/';
+  export let disabled = false;
 </script>
-
-<a href={to || href} class="lvrs-link" class:disabled={disabled} style:text-decoration={underline ? 'underline' : 'none'} on:click={onClick}>
-	<slot>{to || href}</slot>
-</a>
-
-<style>
-	.lvrs-link {
-		color: var(--lvrs-color-primary, #0A84FF);
-		cursor: pointer;
-	}
-
-	.lvrs-link:hover {
-		color: var(--lvrs-color-text-primary, #E5FFFFFF);
-	}
-
-	.lvrs-link.disabled {
-		pointer-events: none;
-		opacity: 0.65;
-	}
-</style>
+<a {...$$restProps} href={disabled ? undefined : href} aria-disabled={disabled || undefined} tabindex={disabled ? -1 : undefined} class="lvrs-link" use:interactionMotion={!disabled} on:click><span class="lvrs-motion-visual"><slot>{href}</slot></span></a>
+<style>.lvrs-link{color:var(--lvrs-color-primary);text-decoration:none;display:inline-flex}.lvrs-link:hover{text-decoration:underline}.lvrs-link:focus-visible{outline:2px solid var(--lvrs-color-primary);outline-offset:3px}.lvrs-link[aria-disabled]{opacity:.35}</style>

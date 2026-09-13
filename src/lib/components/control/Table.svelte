@@ -14,18 +14,18 @@
 	export let backgroundColor = '#282828';
 	export let borderColor = 'var(--lvrs-color-surface-alt, #262728)';
 	export let borderWidth = 1;
-	export let headerTextColor = 'var(--lvrs-color-text-description, #99FFFFFF)';
-	export let cellTextColor = 'var(--lvrs-color-text-body, #CCFFFFFF)';
+	export let headerTextColor = 'var(--lvrs-color-text-description, #FFFFFF99)';
+	export let cellTextColor = 'var(--lvrs-color-text-body, #FFFFFFCC)';
 	export let dividerColor = 'var(--lvrs-color-panel-bg03, #1F1F20)';
 	export let headerSeparatorColor = 'var(--lvrs-color-panel-bg10, #343536)';
 
 	$: safeRows = Array.isArray(rows) ? rows : [];
 </script>
 
-<div class="lvrs-table" style={`--lvrs-table-bg:${backgroundColor}; --lvrs-table-border:${borderColor}; --lvrs-table-border-w:${borderWidth}px;`}>
+<div class="lvrs-table" role="table" aria-label="Data table" style={`--lvrs-table-bg:${backgroundColor}; --lvrs-table-border:${borderColor}; --lvrs-table-border-w:${borderWidth}px;`}>
 	<TableHeader cellItems={headerCellItems} columns={headerColumns} textColor={headerTextColor} separatorColor={headerSeparatorColor} rowHeight={rowHeight} />
 	{#each safeRows as row, idx (idx)}
-		<TableRow cellItems={Array.isArray(row) ? row : []} cellHeight={rowHeight} cellWidth={cellWidth > 0 ? cellWidth : 234} dividerColor={dividerColor} textColor={cellTextColor} />
+		<TableRow cellItems={Array.isArray(row) ? row : []} cellHeight={rowHeight} cellWidth={cellWidth} dividerColor={dividerColor} textColor={cellTextColor} />
 	{/each}
 </div>
 

@@ -88,7 +88,7 @@ if [[ "${installed_identity}" != "${package_name}@${package_version}" ]]; then
 	exit 1
 fi
 
-for required_file in dist/index.js dist/index.d.ts LICENSE package.json; do
+for required_file in build/package/index.js build/package/index.d.ts LICENSE package.json; do
 	if [[ ! -f "${installed_dir}/${required_file}" ]]; then
 		echo "Installed LVRS-Svelte package is missing ${required_file}." >&2
 		exit 1

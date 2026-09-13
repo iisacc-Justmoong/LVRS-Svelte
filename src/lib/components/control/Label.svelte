@@ -14,49 +14,49 @@
 			size: 'var(--lvrs-text-title-size, 26px)',
 			weight: 'var(--lvrs-text-title-weight, 700)',
 			lineHeight: 'var(--lvrs-text-title-line-height, 26px)',
-			color: 'var(--lvrs-color-text-primary, #E5FFFFFF)'
+			color: 'var(--lvrs-color-text-primary, #FFFFFFE5)'
 		},
 		title2: {
 			size: 'var(--lvrs-text-title2-size, 22px)',
 			weight: 'var(--lvrs-text-title2-weight, 700)',
 			lineHeight: 'var(--lvrs-text-title2-line-height, 22px)',
-			color: 'var(--lvrs-color-text-primary, #E5FFFFFF)'
+			color: 'var(--lvrs-color-text-primary, #FFFFFFE5)'
 		},
 		header: {
 			size: 'var(--lvrs-text-header-size, 17px)',
 			weight: 'var(--lvrs-text-header-weight, 600)',
 			lineHeight: 'var(--lvrs-text-header-line-height, 17px)',
-			color: 'var(--lvrs-color-text-primary, #E5FFFFFF)'
+			color: 'var(--lvrs-color-text-primary, #FFFFFFE5)'
 		},
 		header2: {
 			size: 'var(--lvrs-text-header2-size, 15px)',
 			weight: 'var(--lvrs-text-header2-weight, 600)',
 			lineHeight: 'var(--lvrs-text-header2-line-height, 15px)',
-			color: 'var(--lvrs-color-text-primary, #E5FFFFFF)'
+			color: 'var(--lvrs-color-text-primary, #FFFFFFE5)'
 		},
 		body: {
 			size: 'var(--lvrs-text-body-size, 12px)',
 			weight: 'var(--lvrs-text-body-weight, 500)',
 			lineHeight: 'var(--lvrs-text-body-line-height, 12px)',
-			color: 'var(--lvrs-color-text-body, #CCFFFFFF)'
+			color: 'var(--lvrs-color-text-body, #FFFFFFCC)'
 		},
 		description: {
 			size: 'var(--lvrs-text-description-size, 12px)',
 			weight: 'var(--lvrs-text-description-weight, 600)',
 			lineHeight: 'var(--lvrs-text-description-line-height, 12px)',
-			color: 'var(--lvrs-color-text-description, #99FFFFFF)'
+			color: 'var(--lvrs-color-text-description, #FFFFFF99)'
 		},
 		caption: {
 			size: 'var(--lvrs-text-caption-size, 11px)',
 			weight: 'var(--lvrs-text-caption-weight, 400)',
 			lineHeight: 'var(--lvrs-text-caption-line-height, 11px)',
-			color: 'var(--lvrs-color-text-caption, #80FFFFFF)'
+			color: 'var(--lvrs-color-text-caption, #FFFFFF80)'
 		},
 		disabled: {
 			size: 'var(--lvrs-text-caption-size, 11px)',
 			weight: 'var(--lvrs-text-caption-weight, 400)',
 			lineHeight: 'var(--lvrs-text-caption-line-height, 11px)',
-			color: 'var(--lvrs-color-text-disabled, #4DFFFFFF)'
+			color: 'var(--lvrs-color-text-disabled, #FFFFFF4D)'
 		}
 	};
 

@@ -3,11 +3,11 @@
 
 	export let cellItems: any[] | undefined = undefined;
 	export let cells: any[] = ['Text', 'Text', 'Text'];
-	export let cellWidth = 234;
+	export let cellWidth = 0;
 	export let cellHeight = 24;
 	export let contentSpacing = 8;
 	export let dividerColor = 'var(--lvrs-color-panel-bg03, #1F1F20)';
-	export let textColor = 'var(--lvrs-color-text-body, #CCFFFFFF)';
+	export let textColor = 'var(--lvrs-color-text-body, #FFFFFFCC)';
 
 	$: source = cellItems ?? cells;
 	$: normalized = (source ?? []).map((entry) =>
@@ -15,7 +15,7 @@
 	);
 </script>
 
-<div class="lvrs-table-row" style={`--lvrs-row-cell-w:${cellWidth}px; --lvrs-row-cell-h:${cellHeight}px;`}>
+<div class="lvrs-table-row" role="row" style={`--lvrs-row-cell-w:${cellWidth > 0 ? `${cellWidth}px` : '0px'}; --lvrs-row-cell-h:${cellHeight}px;`}>
 	{#if normalized.length === 0}
 		<TableCellItem text="Text" {cellHeight} {contentSpacing} {dividerColor} {textColor} />
 	{:else}
