@@ -69,3 +69,8 @@ component. See [release verification](docs/verification.md) for browser scenario
 The package uses Svelte as its only runtime peer and adds no runtime component dependency.
 It uses browser-native input, select, dialog and details behavior, Svelte reactivity/transitions,
 and the official Svelte packaging toolchain. AGPL-3.0-only; see LICENSE and NOTICE.md.
+# Windows validation
+
+Shell scripts use LF endings through `.gitattributes`. The installer contract test
+checks the Git executable mode on Windows, where filesystem POSIX execute bits
+are unavailable; POSIX hosts continue to check the working-file mode.

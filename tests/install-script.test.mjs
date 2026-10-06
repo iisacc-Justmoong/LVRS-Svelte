@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url));
 const installScriptPath = `${projectRoot}/install.sh`;
@@ -12,7 +13,14 @@ test('install.sh builds, validates, and installs a copied global package', async
 
 	assert.match(installScript, /^#!\/usr\/bin\/env bash\n/);
 	assert.match(installScript, /set -euo pipefail/);
-	assert.notEqual(installScriptStat.mode & 0o111, 0, 'install.sh must be executable');
+	if (process.platform === 'win32') {
+		const trackedMode = execFileSync('git', ['ls-files', '--stage', '--', 'install.sh'], {
+			cwd: projectRoot, encoding: 'utf8'
+		});
+		assert.match(trackedMode, /^100755 /, 'install.sh must retain its Git executable mode');
+	} else {
+		assert.notEqual(installScriptStat.mode & 0o111, 0, 'install.sh must be executable');
+	}
 	assert.match(installScript, /BUILD_DIR="\$\{ROOT_DIR\}\/build"/);
 	assert.ok(installScript.includes('NPM_PREFIX="${LVRS_SVELTE_NPM_PREFIX:-${HOME}/.local/SDK}"'));
 	assert.doesNotMatch(installScript, /npm config get prefix/);
