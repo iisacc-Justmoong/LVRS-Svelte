@@ -1,29 +1,18 @@
-# Release verification: 0.2.1
+<a id="release-verification-021"></a>
 
-2026-09-13. The local automated suite validates the authored 13/18/22px metrics, CSS
-alpha ordering, theme-override isolation, bounded scale displacement, speed/reduced-motion
-behavior, disabled link semantics, progress clamping and SSR of every public visual export.
+# 출시 확인: 0.2.1
 
-Browser verification in Chromium, using the real catalog:
-- Primary and wrapped LabelButton clicks update the counter.
-- Search text clears; Stepper increments; RadioButton group switches; arrow navigation selects Details.
-- Modal closes with Escape and returns focus; Sheet saves and closes; Alert invokes its primary action.
-- ContextMenu opens, ArrowDown skips its disabled item and Enter invokes Duplicate.
-- The global Reduce motion switch changes the shared preference.
+2026-09-13. 로컬 자동화 제품군은 작성된 13/18/22px 측정항목, CSS 알파 순서 지정, 테마 재정의 격리, 한계가 설정된 배율 변위, 속도/모션 감소 동작, 비활성화된 링크 의미 체계, 진행률 클램핑 및 모든 공개 시각적 내보내기의 SSR를 검증합니다.
 
-Reproduce with npm run dev. Exercise the catalog on desktop and at 390px width.
-Build and package outputs are independent gates: npm run check; npm test; npm run build;
-npm pack --ignore-scripts --pack-destination build. Inspect the tarball's file list before publishing.
+실제 카탈로그를 사용하여 Chromium에서 브라우저 확인:
+- 기본 및 래핑된 LabelButton 클릭은 카운터를 업데이트합니다.
+- 검색 텍스트가 지워집니다. 스테퍼 증분; RadioButton 그룹 스위치; 화살표 탐색에서 세부정보를 선택합니다.
+- 모달은 Escape로 닫히고 포커스를 반환합니다. 시트가 저장되고 닫힙니다. 경고는 기본 작업을 호출합니다.
+- ContextMenu가 열리고 ArrowDown는 비활성화된 항목을 건너뛰고 Enter를 누르면 복제가 호출됩니다.
+- 전역 모션 감소 스위치는 공유 기본 설정을 변경합니다.
 
-0.2.1 fixes tooltip positioning inside a material with backdrop-filter. Tooltips are
-owned by a DOM action and rendered under document.body, so the material cannot redefine
-their fixed positioning coordinate system. Edge placement and below-trigger fallback
-are regression-tested; the action restores aria-describedby and removes the portal
-and listeners when destroyed. Verify both hidden and focused tooltips at 390px and
-confirm that Escape dismisses the tooltip without moving its trigger.
+npm  run dev 로 재현하세요. 데스크톱과 390px  너비에서 카탈로그를 연습하세요. 빌드 및 패키지 출력은 독립적인 게이트입니다: npm  run check; npm  test; npm  run build; npm  pack --ignore-scripts --pack-destination build. 배포 전에 타르볼의 파일 목록을 검사하세요.
 
-Final local result: svelte-check 0 errors / 0 warnings; 5/5 tests; publint and static
-catalog build passed. At a 390px browser viewport (375px content width), the document
-remained 375px wide with the tooltip both hidden and keyboard-focused. The visible
-tooltip stayed within the content viewport, and Escape cleared its visible state.
-The publication tarball contains 150 expected files and no credentials, caches or app/layout APIs.
+0.2.1  는 backdrop-filter 을 가진 재료 내부의 툴팁 위치를 수정합니다. 툴팁은 DOM  행동에 의해 소유되며 document.body 하에 렌더링되므로, 재료는 그들의 고정 위치 좌표계를 다시 정의할 수 없습니다. 에지 배치와 트리거 아래 대체 경로 는 회귀 -테스트되었습니다; 행동은 aria-describedby 를 복원하고 파괴될 때 포털과 리스너를 제거합니다. 390px 에서 숨겨진 툴팁과 초점된 툴팁을 확인하고, Esc 가 툴팁을 이동시키지 않고 해제함을 확인하세요.
+
+최종 로컬 결과: svelte-check 0 에러 / 0 경고; 5/5 테스트; publint 와 정적 카탈로그 빌드가 통과했습니다. 390px 브라우저 뷰포트 ( 375px 콘텐츠 너비) 에서, 문서는 툴팁이 숨겨지고 키보드 초점에 있는 상태에서 375px 넓게 유지되었습니다. 가시적인 툴팁은 콘텐츠 뷰포트 내에 있었고, Esc 가 가시 상태를 지웠습니다. 배포 타르볼은 150 예상 파일과 인증 정보, 캐시 또는 app/layout API 가 없습니다.
