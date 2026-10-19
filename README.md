@@ -1,5 +1,10 @@
 # LVRS-Svelte
 
+Package release: **0.2.2** (2026-10-19). This patch packages the current
+source snapshot; build, test and installation evidence is recorded in the SDK
+patch-release report. Earlier versioned feature notes remain historical.
+
+
 LVRS visual components, materials and elastic interaction for Svelte 5.
 This release follows LVRS source `953189f1217b8eab6ec0abba23c8ad5dc6a43ef2` (2026-09-13).
 
