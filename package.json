@@ -2,7 +2,7 @@
   "name": "lvrs-svelte",
   "version": "0.2.2",
   "description": "LVRS visual components, materials and elastic interactions for Svelte 5",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "npm run prepack && vite build",
