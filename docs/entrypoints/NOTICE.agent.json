@@ -1,0 +1,71 @@
+{
+  "format": "iisacc.agent-document",
+  "schema_version": 1,
+  "document_id": "urn:iisacc:document:74c085e268097945bbb0aa6f81142cd90af4c31481e11917dfd4554f7e9d4725",
+  "project": {
+    "id": "urn:iisacc:project:SDK%2FLVRS-Svelte",
+    "name": "LVRS-Svelte",
+    "root": "SDK/LVRS-Svelte",
+    "kind": "sdk"
+  },
+  "source": {
+    "path": "NOTICE.md",
+    "sha256": "19c7e49986711e62bcc659192c7f424355e7ea435c65aa2c538a12f65aa48307",
+    "bytes": 471,
+    "line_count": 7,
+    "encoding": "utf-8",
+    "language": "en"
+  },
+  "document": {
+    "title": "LVRS-Svelte notices",
+    "role": "guide",
+    "authority": "markdown_source"
+  },
+  "blocks": [
+    {
+      "id": "b000001",
+      "kind": "heading",
+      "start_line": 1,
+      "end_line": 1,
+      "raw": "# LVRS-Svelte notices\n",
+      "level": 1,
+      "title": "LVRS-Svelte notices"
+    },
+    {
+      "id": "b000002",
+      "kind": "blank",
+      "start_line": 2,
+      "end_line": 2,
+      "raw": "\n"
+    },
+    {
+      "id": "b000003",
+      "kind": "paragraph",
+      "start_line": 3,
+      "end_line": 7,
+      "raw": "LVRS-Svelte is distributed under MIT; see LICENSE.\nThe LVRS theme, component visual contracts, motion parameters and SVG assets are adapted from\nhttps://github.com/iisacc-Justmoong/LVRS, snapshot 953189f1217b8eab6ec0abba23c8ad5dc6a43ef2 (2026-09-13).\nThe package includes the general-control and card SVG subset from that repository.\nPretendard is a preferred font family, not an embedded font dependency; applications supply their own font files.\n"
+    }
+  ],
+  "outline": [
+    {
+      "block_id": "b000001",
+      "parent_id": null,
+      "level": 1,
+      "title": "LVRS-Svelte notices",
+      "anchor": "lvrs-svelte-notices",
+      "start_line": 1
+    }
+  ],
+  "indexes": {
+    "directive_candidates": [],
+    "commands": [],
+    "links": [],
+    "tables": []
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "format": "iisacc.agent-document-index",
+  "schema_version": 1,
+  "project": {
+    "id": "urn:iisacc:project:SDK%2FLVRS-Svelte",
+    "name": "LVRS-Svelte",
+    "root": "SDK/LVRS-Svelte",
+    "kind": "sdk"
+  },
+  "documentation_root": "docs",
+  "agent_schema": "docs/agent-document.schema.json",
+  "documents": [
+    {
+      "document_id": "urn:iisacc:document:99ec29a16c41a52c8e65094581c8cd505542d183f6f3ab2cd5f6fcd5ccad8976",
+      "source": "AGENT.md",
+      "agent_json": "docs/entrypoints/AGENT.agent.json",
+      "source_sha256": "62ee0b2f22a4e5e89228f6a96585fef1667ec3ac9a8e7e4aefa4c640b32260a2",
+      "role": "instructions"
+    },
+    {
+      "document_id": "urn:iisacc:document:74c085e268097945bbb0aa6f81142cd90af4c31481e11917dfd4554f7e9d4725",
+      "source": "NOTICE.md",
+      "agent_json": "docs/entrypoints/NOTICE.agent.json",
+      "source_sha256": "19c7e49986711e62bcc659192c7f424355e7ea435c65aa2c538a12f65aa48307",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:3618e00b823739b05ec9d19c5cd86bd7dd9f6c1dbce3f4427ff1674d7edc41dc",
+      "source": "README.md",
+      "agent_json": "docs/entrypoints/README.agent.json",
+      "source_sha256": "2bfe3d1fcb20b9921d35a2cebc69a9f47e83272e02be75b28e34a9ab97d498f9",
+      "role": "overview"
+    },
+    {
+      "document_id": "urn:iisacc:document:93d02fe946e79c505947f84bbcd699688e6bce8e4d5ddc0ce0a5c8b31a8bebf8",
+      "source": "docs/README.md",
+      "agent_json": "docs/README.agent.json",
+      "source_sha256": "1e02c5a8761acde54170ba8886e782fad0134e2ccf0ea32905e2606531246e77",
+      "role": "overview"
+    },
+    {
+      "document_id": "urn:iisacc:document:bc9e3079dfb9426a1c031d4ba0aeba7cf73ac0ac7c38a587eb3a79b91e6b84e7",
+      "source": "docs/WindowsBuildAndRun.md",
+      "agent_json": "docs/WindowsBuildAndRun.agent.json",
+      "source_sha256": "f8eec8e11df34cd9aac108fbac2d086ecf46aac6c6886125ee19602e2599bf21",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:470c79f2c1ce628afbd8240e3d76c28d8892a0e43290f1b8007649aded79db5d",
+      "source": "docs/components.md",
+      "agent_json": "docs/components.agent.json",
+      "source_sha256": "9ba5c2ce35eed43a5c6108cc24da60c6fe511e64c78ddac4349b96676173bc0c",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:ef769cef8bbe32018dd3c1754a4bf68253f218707f1d77039ce418c06f08252d",
+      "source": "docs/documentation-structure.md",
+      "agent_json": "docs/documentation-structure.agent.json",
+      "source_sha256": "1ac957c4001f1830c971c6d92bf89079e87c09c80c6416a6346b4e9fea25d7a1",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:17fa972c4dd12ae9cffaf4fe9a715d57102f369ac41029ae1f5040c055dd03c5",
+      "source": "docs/migration-status.md",
+      "agent_json": "docs/migration-status.agent.json",
+      "source_sha256": "d5452668c647dab05548c024f86fe73369ba575b57206edaf90201f038d1ed0b",
+      "role": "guide"
+    },
+    {
+      "document_id": "urn:iisacc:document:6b79e9fcb6bfd3ffccb7e6cbc7ff3a5002e198efff5f832cb218d7d7159e8d79",
+      "source": "docs/verification.md",
+      "agent_json": "docs/verification.agent.json",
+      "source_sha256": "409f54f4043cc5bc63c50ef1ef3fbfbbd746fcba3e1a45fdba1a10db4167a144",
+      "role": "evidence"
+    }
+  ],
+  "layout": {
+    "human_entry": "README.md",
+    "agent_entry": "AGENT.md",
+    "human_format": "markdown",
+    "agent_format": "structured_json",
+    "source_authority": "markdown"
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}

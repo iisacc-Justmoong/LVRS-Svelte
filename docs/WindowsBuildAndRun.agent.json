@@ -1,0 +1,566 @@
+{
+  "format": "iisacc.agent-document",
+  "schema_version": 1,
+  "document_id": "urn:iisacc:document:bc9e3079dfb9426a1c031d4ba0aeba7cf73ac0ac7c38a587eb3a79b91e6b84e7",
+  "project": {
+    "id": "urn:iisacc:project:SDK%2FLVRS-Svelte",
+    "name": "LVRS-Svelte",
+    "root": "SDK/LVRS-Svelte",
+    "kind": "sdk"
+  },
+  "source": {
+    "path": "docs/WindowsBuildAndRun.md",
+    "sha256": "f8eec8e11df34cd9aac108fbac2d086ecf46aac6c6886125ee19602e2599bf21",
+    "bytes": 4287,
+    "line_count": 77,
+    "encoding": "utf-8",
+    "language": "ko"
+  },
+  "document": {
+    "title": "LVRS-Svelte: Windows 빌드 및 실행",
+    "role": "guide",
+    "authority": "markdown_source"
+  },
+  "blocks": [
+    {
+      "id": "b000001",
+      "kind": "heading",
+      "start_line": 1,
+      "end_line": 1,
+      "raw": "# LVRS-Svelte: Windows 빌드 및 실행\r\n",
+      "level": 1,
+      "title": "LVRS-Svelte: Windows 빌드 및 실행"
+    },
+    {
+      "id": "b000002",
+      "kind": "blank",
+      "start_line": 2,
+      "end_line": 2,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000003",
+      "kind": "paragraph",
+      "start_line": 3,
+      "end_line": 3,
+      "raw": "Svelte 5용 LVRS 시각 컴포넌트·theme·motion 패키지와 catalog이다.\r\n"
+    },
+    {
+      "id": "b000004",
+      "kind": "blank",
+      "start_line": 4,
+      "end_line": 4,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000005",
+      "kind": "paragraph",
+      "start_line": 5,
+      "end_line": 5,
+      "raw": "검증 기록 갱신: `2026-10-20T02:45:37+09:00`. 변경 전 소스 기준 commit: `22069fc8e4006183a1e7631095dd97b7a56074c6`. 아래 결과는 이번 변경을 포함한 작업 트리의 검증이다.\r\n"
+    },
+    {
+      "id": "b000006",
+      "kind": "blank",
+      "start_line": 6,
+      "end_line": 6,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000007",
+      "kind": "heading",
+      "start_line": 7,
+      "end_line": 7,
+      "raw": "## 현재 검증 상태\r\n",
+      "level": 2,
+      "title": "현재 검증 상태"
+    },
+    {
+      "id": "b000008",
+      "kind": "blank",
+      "start_line": 8,
+      "end_line": 8,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000009",
+      "kind": "paragraph",
+      "start_line": 9,
+      "end_line": 9,
+      "raw": "Node 실행 검사 5개, Svelte 검사, 패키지·catalog 빌드, loopback preview HTTP 200 응답 및 사용자 SDK prefix의 로컬 패키지 설치를 완료하였다. 브라우저의 모든 상호작용을 검증한 결과는 아니다.\r\n"
+    },
+    {
+      "id": "b000010",
+      "kind": "blank",
+      "start_line": 10,
+      "end_line": 10,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000011",
+      "kind": "heading",
+      "start_line": 11,
+      "end_line": 11,
+      "raw": "## 이 프로젝트의 의존성과 실행 범위\r\n",
+      "level": 2,
+      "title": "이 프로젝트의 의존성과 실행 범위"
+    },
+    {
+      "id": "b000012",
+      "kind": "blank",
+      "start_line": 12,
+      "end_line": 12,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000013",
+      "kind": "paragraph",
+      "start_line": 13,
+      "end_line": 13,
+      "raw": "필수 workspace SDK의 선행 설치는 없다.\r\n"
+    },
+    {
+      "id": "b000014",
+      "kind": "blank",
+      "start_line": 14,
+      "end_line": 14,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000015",
+      "kind": "list",
+      "start_line": 15,
+      "end_line": 16,
+      "raw": "- Node.js 20 이상과 npm이 필요하다. 이번 머신의 검증 runtime은 Node.js 24.21.0이다.\r\n- CMake·Qt·MSVC를 사용하지 않는다. `package-lock.json`을 사용하여 의존성을 재현한다.\r\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "Node.js 20 이상과 npm이 필요하다. 이번 머신의 검증 runtime은 Node.js 24.21.0이다.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "CMake·Qt·MSVC를 사용하지 않는다. `package-lock.json`을 사용하여 의존성을 재현한다.",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000016",
+      "kind": "blank",
+      "start_line": 17,
+      "end_line": 17,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000017",
+      "kind": "heading",
+      "start_line": 18,
+      "end_line": 18,
+      "raw": "## 환경과 빌드\r\n",
+      "level": 2,
+      "title": "환경과 빌드"
+    },
+    {
+      "id": "b000018",
+      "kind": "blank",
+      "start_line": 19,
+      "end_line": 19,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000019",
+      "kind": "paragraph",
+      "start_line": 20,
+      "end_line": 20,
+      "raw": "PowerShell에서 LVRS-Svelte 프로젝트 루트로 이동하여 실행한다. npm의 PowerShell 실행 정책 문제를 피하도록 `npm.cmd`를 명시한다.\r\n"
+    },
+    {
+      "id": "b000020",
+      "kind": "blank",
+      "start_line": 21,
+      "end_line": 21,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000021",
+      "kind": "fenced_code",
+      "start_line": 22,
+      "end_line": 36,
+      "raw": "```powershell\r\n$ErrorActionPreference = 'Stop'\r\n$workspace = (Resolve-Path -LiteralPath '../..').Path\r\n$env:PATH = 'C:/Program Files/nodejs;' + $env:PATH\r\n$env:NPM_CONFIG_CACHE = Join-Path $workspace 'build/npm-cache'\r\nnode.exe --version\r\nnpm.cmd ci --no-audit --no-fund\r\nif ($LASTEXITCODE -ne 0) { throw '의존성 설치 실패' }\r\nnpm.cmd run test\r\nif ($LASTEXITCODE -ne 0) { throw 'Node 실행 테스트 실패' }\r\nnpm.cmd run check\r\nif ($LASTEXITCODE -ne 0) { throw 'Svelte 검사 실패' }\r\nnpm.cmd run build\r\nif ($LASTEXITCODE -ne 0) { throw '패키지 및 catalog 빌드 실패' }\r\n```\r\n",
+      "language": "powershell",
+      "code": "$ErrorActionPreference = 'Stop'\r\n$workspace = (Resolve-Path -LiteralPath '../..').Path\r\n$env:PATH = 'C:/Program Files/nodejs;' + $env:PATH\r\n$env:NPM_CONFIG_CACHE = Join-Path $workspace 'build/npm-cache'\r\nnode.exe --version\r\nnpm.cmd ci --no-audit --no-fund\r\nif ($LASTEXITCODE -ne 0) { throw '의존성 설치 실패' }\r\nnpm.cmd run test\r\nif ($LASTEXITCODE -ne 0) { throw 'Node 실행 테스트 실패' }\r\nnpm.cmd run check\r\nif ($LASTEXITCODE -ne 0) { throw 'Svelte 검사 실패' }\r\nnpm.cmd run build\r\nif ($LASTEXITCODE -ne 0) { throw '패키지 및 catalog 빌드 실패' }\r\n",
+      "closed": true
+    },
+    {
+      "id": "b000022",
+      "kind": "blank",
+      "start_line": 37,
+      "end_line": 37,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000023",
+      "kind": "paragraph",
+      "start_line": 38,
+      "end_line": 38,
+      "raw": "SvelteKit 중간 파일은 `build/kit`, 배포 패키지는 `build/package`, 정적 catalog는 `build/catalog`에 생성된다. `prepack`에는 theme 생성, svelte-package와 publint가 포함된다.\r\n"
+    },
+    {
+      "id": "b000024",
+      "kind": "blank",
+      "start_line": 39,
+      "end_line": 39,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000025",
+      "kind": "heading",
+      "start_line": 40,
+      "end_line": 40,
+      "raw": "## 실행\r\n",
+      "level": 2,
+      "title": "실행"
+    },
+    {
+      "id": "b000026",
+      "kind": "blank",
+      "start_line": 41,
+      "end_line": 41,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000027",
+      "kind": "paragraph",
+      "start_line": 42,
+      "end_line": 42,
+      "raw": "빌드한 catalog를 loopback 주소에서 제공한다. 아래 프로세스는 PowerShell에서 Ctrl+C로 종료한다.\r\n"
+    },
+    {
+      "id": "b000028",
+      "kind": "blank",
+      "start_line": 43,
+      "end_line": 43,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000029",
+      "kind": "fenced_code",
+      "start_line": 44,
+      "end_line": 46,
+      "raw": "```powershell\r\nnpm.cmd run preview -- --host 127.0.0.1 --port 4179 --strictPort\r\n```\r\n",
+      "language": "powershell",
+      "code": "npm.cmd run preview -- --host 127.0.0.1 --port 4179 --strictPort\r\n",
+      "closed": true
+    },
+    {
+      "id": "b000030",
+      "kind": "blank",
+      "start_line": 47,
+      "end_line": 47,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000031",
+      "kind": "paragraph",
+      "start_line": 48,
+      "end_line": 48,
+      "raw": "브라우저에서 `http://127.0.0.1:4179/`를 열어 컴포넌트 catalog를 확인한다. 다른 PowerShell에서 다음 응답 검사도 수행할 수 있다.\r\n"
+    },
+    {
+      "id": "b000032",
+      "kind": "blank",
+      "start_line": 49,
+      "end_line": 49,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000033",
+      "kind": "fenced_code",
+      "start_line": 50,
+      "end_line": 52,
+      "raw": "```powershell\r\n(Invoke-WebRequest -Uri 'http://127.0.0.1:4179/' -UseBasicParsing).StatusCode\r\n```\r\n",
+      "language": "powershell",
+      "code": "(Invoke-WebRequest -Uri 'http://127.0.0.1:4179/' -UseBasicParsing).StatusCode\r\n",
+      "closed": true
+    },
+    {
+      "id": "b000034",
+      "kind": "blank",
+      "start_line": 53,
+      "end_line": 53,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000035",
+      "kind": "paragraph",
+      "start_line": 54,
+      "end_line": 54,
+      "raw": "정상 응답은 200이다. HTTP 응답과 모든 컴포넌트 상호작용 검증은 범위가 다르다.\r\n"
+    },
+    {
+      "id": "b000036",
+      "kind": "blank",
+      "start_line": 55,
+      "end_line": 55,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000037",
+      "kind": "heading",
+      "start_line": 56,
+      "end_line": 56,
+      "raw": "## 로컬 패키지 설치\r\n",
+      "level": 2,
+      "title": "로컬 패키지 설치"
+    },
+    {
+      "id": "b000038",
+      "kind": "blank",
+      "start_line": 57,
+      "end_line": 57,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000039",
+      "kind": "paragraph",
+      "start_line": 58,
+      "end_line": 58,
+      "raw": "앞의 테스트·검사·빌드를 통과한 뒤 pack하고 현재 사용자의 SDK prefix에 설치한다. registry publish는 수행하지 않는다.\r\n"
+    },
+    {
+      "id": "b000040",
+      "kind": "blank",
+      "start_line": 59,
+      "end_line": 59,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000041",
+      "kind": "fenced_code",
+      "start_line": 60,
+      "end_line": 67,
+      "raw": "```powershell\r\nnpm.cmd pack --ignore-scripts --pack-destination build\r\nif ($LASTEXITCODE -ne 0) { throw '패키지 생성 실패' }\r\n$package = Get-ChildItem -LiteralPath build -Filter 'lvrs-svelte-*.tgz' | Sort-Object LastWriteTime -Descending | Select-Object -First 1\r\nif (-not $package) { throw '생성된 패키지가 없음' }\r\nnpm.cmd install --global --ignore-scripts --no-audit --no-fund --prefix \"$env:USERPROFILE/.local/SDK\" $package.FullName\r\nif ($LASTEXITCODE -ne 0) { throw '로컬 패키지 설치 실패' }\r\n```\r\n",
+      "language": "powershell",
+      "code": "npm.cmd pack --ignore-scripts --pack-destination build\r\nif ($LASTEXITCODE -ne 0) { throw '패키지 생성 실패' }\r\n$package = Get-ChildItem -LiteralPath build -Filter 'lvrs-svelte-*.tgz' | Sort-Object LastWriteTime -Descending | Select-Object -First 1\r\nif (-not $package) { throw '생성된 패키지가 없음' }\r\nnpm.cmd install --global --ignore-scripts --no-audit --no-fund --prefix \"$env:USERPROFILE/.local/SDK\" $package.FullName\r\nif ($LASTEXITCODE -ne 0) { throw '로컬 패키지 설치 실패' }\r\n",
+      "closed": true
+    },
+    {
+      "id": "b000042",
+      "kind": "blank",
+      "start_line": 68,
+      "end_line": 68,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000043",
+      "kind": "paragraph",
+      "start_line": 69,
+      "end_line": 69,
+      "raw": "설치 위치는 `~/.local/SDK/node_modules/lvrs-svelte`이다. 실제 Svelte 앱 소비자는 Svelte 5 peer dependency를 함께 갖추어야 한다.\r\n"
+    },
+    {
+      "id": "b000044",
+      "kind": "blank",
+      "start_line": 70,
+      "end_line": 70,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000045",
+      "kind": "heading",
+      "start_line": 71,
+      "end_line": 71,
+      "raw": "## 검증 근거\r\n",
+      "level": 2,
+      "title": "검증 근거"
+    },
+    {
+      "id": "b000046",
+      "kind": "blank",
+      "start_line": 72,
+      "end_line": 72,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000047",
+      "kind": "list",
+      "start_line": 73,
+      "end_line": 75,
+      "raw": "- 빌드 정의: [package.json](../package.json), svelte.config.js 및 Vite 설정이다.\r\n- 이번 실행 결과: [Windows SDK 전체 검증 기록](https://github.com/iisacc-Justmoong/SDK/blob/main/Windows/Verification-20261020.md)이다.\r\n- 프로젝트별 실행 로그와 JUnit은 같은 검증 디렉터리에 보관한다. 로그의 종료 코드, 실패·skip 목록과 실제 실행 범위를 함께 확인한다.\r\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "빌드 정의: [package.json](../package.json), svelte.config.js 및 Vite 설정이다.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "이번 실행 결과: [Windows SDK 전체 검증 기록](https://github.com/iisacc-Justmoong/SDK/blob/main/Windows/Verification-20261020.md)이다.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "프로젝트별 실행 로그와 JUnit은 같은 검증 디렉터리에 보관한다. 로그의 종료 코드, 실패·skip 목록과 실제 실행 범위를 함께 확인한다.",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000048",
+      "kind": "blank",
+      "start_line": 76,
+      "end_line": 76,
+      "raw": "\r\n"
+    },
+    {
+      "id": "b000049",
+      "kind": "paragraph",
+      "start_line": 77,
+      "end_line": 77,
+      "raw": "전체 SDK의 실행·설치와 커밋 조건은 [공통 Windows 검증 도구](https://github.com/iisacc-Justmoong/SDK/blob/main/Windows/README.md)에서 재현한다. 원본 JSON·JUnit·상세 로그는 로컬 `Workspace/build/maintenance/20261019-221920-sdk-recovery/final/`에 보관하며 Git에는 포함하지 않는다. 이 프로젝트의 성공은 제품·다른 플랫폼·별도 계정 및 물리 장치의 실연동을 대신하지 않는다.\r\n"
+    }
+  ],
+  "outline": [
+    {
+      "block_id": "b000001",
+      "parent_id": null,
+      "level": 1,
+      "title": "LVRS-Svelte: Windows 빌드 및 실행",
+      "anchor": "lvrs-svelte-windows-빌드-및-실행",
+      "start_line": 1
+    },
+    {
+      "block_id": "b000007",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "현재 검증 상태",
+      "anchor": "현재-검증-상태",
+      "start_line": 7
+    },
+    {
+      "block_id": "b000011",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "이 프로젝트의 의존성과 실행 범위",
+      "anchor": "이-프로젝트의-의존성과-실행-범위",
+      "start_line": 11
+    },
+    {
+      "block_id": "b000017",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "환경과 빌드",
+      "anchor": "환경과-빌드",
+      "start_line": 18
+    },
+    {
+      "block_id": "b000025",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "실행",
+      "anchor": "실행",
+      "start_line": 40
+    },
+    {
+      "block_id": "b000037",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "로컬 패키지 설치",
+      "anchor": "로컬-패키지-설치",
+      "start_line": 56
+    },
+    {
+      "block_id": "b000045",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "검증 근거",
+      "anchor": "검증-근거",
+      "start_line": 71
+    }
+  ],
+  "indexes": {
+    "directive_candidates": [
+      {
+        "block_id": "b000013",
+        "line": 13,
+        "text": "필수 workspace SDK의 선행 설치는 없다.",
+        "basis": "lexical_match",
+        "context": "paragraph"
+      },
+      {
+        "block_id": "b000015",
+        "line": 16,
+        "text": "- CMake·Qt·MSVC를 사용하지 않는다. `package-lock.json`을 사용하여 의존성을 재현한다.",
+        "basis": "lexical_match",
+        "context": "list"
+      },
+      {
+        "block_id": "b000039",
+        "line": 58,
+        "text": "앞의 테스트·검사·빌드를 통과한 뒤 pack하고 현재 사용자의 SDK prefix에 설치한다. registry publish는 수행하지 않는다.",
+        "basis": "lexical_match",
+        "context": "paragraph"
+      },
+      {
+        "block_id": "b000049",
+        "line": 77,
+        "text": "전체 SDK의 실행·설치와 커밋 조건은 [공통 Windows 검증 도구](https://github.com/iisacc-Justmoong/SDK/blob/main/Windows/README.md)에서 재현한다. 원본 JSON·JUnit·상세 로그는 로컬 `Workspace/build/maintenance/20261019-221920-sdk-recovery/final/`에 보관하며 Git에는 포함하지 않는다. 이 프로젝트의 성공은 제품·다른 플랫폼·별도 계정 및 물리 장치의 실연동을 대신하지 않는다.",
+        "basis": "lexical_match",
+        "context": "paragraph"
+      }
+    ],
+    "commands": [
+      {
+        "block_id": "b000021",
+        "language": "powershell",
+        "code": "$ErrorActionPreference = 'Stop'\r\n$workspace = (Resolve-Path -LiteralPath '../..').Path\r\n$env:PATH = 'C:/Program Files/nodejs;' + $env:PATH\r\n$env:NPM_CONFIG_CACHE = Join-Path $workspace 'build/npm-cache'\r\nnode.exe --version\r\nnpm.cmd ci --no-audit --no-fund\r\nif ($LASTEXITCODE -ne 0) { throw '의존성 설치 실패' }\r\nnpm.cmd run test\r\nif ($LASTEXITCODE -ne 0) { throw 'Node 실행 테스트 실패' }\r\nnpm.cmd run check\r\nif ($LASTEXITCODE -ne 0) { throw 'Svelte 검사 실패' }\r\nnpm.cmd run build\r\nif ($LASTEXITCODE -ne 0) { throw '패키지 및 catalog 빌드 실패' }\r\n"
+      },
+      {
+        "block_id": "b000029",
+        "language": "powershell",
+        "code": "npm.cmd run preview -- --host 127.0.0.1 --port 4179 --strictPort\r\n"
+      },
+      {
+        "block_id": "b000033",
+        "language": "powershell",
+        "code": "(Invoke-WebRequest -Uri 'http://127.0.0.1:4179/' -UseBasicParsing).StatusCode\r\n"
+      },
+      {
+        "block_id": "b000041",
+        "language": "powershell",
+        "code": "npm.cmd pack --ignore-scripts --pack-destination build\r\nif ($LASTEXITCODE -ne 0) { throw '패키지 생성 실패' }\r\n$package = Get-ChildItem -LiteralPath build -Filter 'lvrs-svelte-*.tgz' | Sort-Object LastWriteTime -Descending | Select-Object -First 1\r\nif (-not $package) { throw '생성된 패키지가 없음' }\r\nnpm.cmd install --global --ignore-scripts --no-audit --no-fund --prefix \"$env:USERPROFILE/.local/SDK\" $package.FullName\r\nif ($LASTEXITCODE -ne 0) { throw '로컬 패키지 설치 실패' }\r\n"
+      }
+    ],
+    "links": [
+      {
+        "block_id": "b000047",
+        "label": "package.json",
+        "target": "../package.json",
+        "kind": "relative",
+        "line": 73
+      },
+      {
+        "block_id": "b000047",
+        "label": "Windows SDK 전체 검증 기록",
+        "target": "https://github.com/iisacc-Justmoong/SDK/blob/main/Windows/Verification-20261020.md",
+        "kind": "external",
+        "line": 74
+      },
+      {
+        "block_id": "b000049",
+        "label": "공통 Windows 검증 도구",
+        "target": "https://github.com/iisacc-Justmoong/SDK/blob/main/Windows/README.md",
+        "kind": "external",
+        "line": 77
+      }
+    ],
+    "tables": []
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}

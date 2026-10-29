@@ -1,0 +1,175 @@
+{
+  "format": "iisacc.agent-document",
+  "schema_version": 1,
+  "document_id": "urn:iisacc:document:6b79e9fcb6bfd3ffccb7e6cbc7ff3a5002e198efff5f832cb218d7d7159e8d79",
+  "project": {
+    "id": "urn:iisacc:project:SDK%2FLVRS-Svelte",
+    "name": "LVRS-Svelte",
+    "root": "SDK/LVRS-Svelte",
+    "kind": "sdk"
+  },
+  "source": {
+    "path": "docs/verification.md",
+    "sha256": "409f54f4043cc5bc63c50ef1ef3fbfbbd746fcba3e1a45fdba1a10db4167a144",
+    "bytes": 2440,
+    "line_count": 18,
+    "encoding": "utf-8",
+    "language": "ko"
+  },
+  "document": {
+    "title": "출시 확인: 0.2.1",
+    "role": "evidence",
+    "authority": "markdown_source"
+  },
+  "blocks": [
+    {
+      "id": "b000001",
+      "kind": "html",
+      "start_line": 1,
+      "end_line": 1,
+      "raw": "<a id=\"release-verification-021\"></a>\n"
+    },
+    {
+      "id": "b000002",
+      "kind": "blank",
+      "start_line": 2,
+      "end_line": 2,
+      "raw": "\n"
+    },
+    {
+      "id": "b000003",
+      "kind": "heading",
+      "start_line": 3,
+      "end_line": 3,
+      "raw": "# 출시 확인: 0.2.1\n",
+      "level": 1,
+      "title": "출시 확인: 0.2.1"
+    },
+    {
+      "id": "b000004",
+      "kind": "blank",
+      "start_line": 4,
+      "end_line": 4,
+      "raw": "\n"
+    },
+    {
+      "id": "b000005",
+      "kind": "paragraph",
+      "start_line": 5,
+      "end_line": 5,
+      "raw": "2026-09-13. 로컬 자동화 제품군은 작성된 13/18/22px 측정항목, CSS 알파 순서 지정, 테마 재정의 격리, 한계가 설정된 배율 변위, 속도/모션 감소 동작, 비활성화된 링크 의미 체계, 진행률 클램핑 및 모든 공개 시각적 내보내기의 SSR를 검증합니다.\n"
+    },
+    {
+      "id": "b000006",
+      "kind": "blank",
+      "start_line": 6,
+      "end_line": 6,
+      "raw": "\n"
+    },
+    {
+      "id": "b000007",
+      "kind": "paragraph",
+      "start_line": 7,
+      "end_line": 7,
+      "raw": "실제 카탈로그를 사용하여 Chromium에서 브라우저 확인:\n"
+    },
+    {
+      "id": "b000008",
+      "kind": "list",
+      "start_line": 8,
+      "end_line": 12,
+      "raw": "- 기본 및 래핑된 LabelButton 클릭은 카운터를 업데이트합니다.\n- 검색 텍스트가 지워집니다. 스테퍼 증분; RadioButton 그룹 스위치; 화살표 탐색에서 세부정보를 선택합니다.\n- 모달은 Escape로 닫히고 포커스를 반환합니다. 시트가 저장되고 닫힙니다. 경고는 기본 작업을 호출합니다.\n- ContextMenu가 열리고 ArrowDown는 비활성화된 항목을 건너뛰고 Enter를 누르면 복제가 호출됩니다.\n- 전역 모션 감소 스위치는 공유 기본 설정을 변경합니다.\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "기본 및 래핑된 LabelButton 클릭은 카운터를 업데이트합니다.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "검색 텍스트가 지워집니다. 스테퍼 증분; RadioButton 그룹 스위치; 화살표 탐색에서 세부정보를 선택합니다.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "모달은 Escape로 닫히고 포커스를 반환합니다. 시트가 저장되고 닫힙니다. 경고는 기본 작업을 호출합니다.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "ContextMenu가 열리고 ArrowDown는 비활성화된 항목을 건너뛰고 Enter를 누르면 복제가 호출됩니다.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "전역 모션 감소 스위치는 공유 기본 설정을 변경합니다.",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000009",
+      "kind": "blank",
+      "start_line": 13,
+      "end_line": 13,
+      "raw": "\n"
+    },
+    {
+      "id": "b000010",
+      "kind": "paragraph",
+      "start_line": 14,
+      "end_line": 14,
+      "raw": "npm  run dev 로 재현하세요. 데스크톱과 390px  너비에서 카탈로그를 연습하세요. 빌드 및 패키지 출력은 독립적인 게이트입니다: npm  run check; npm  test; npm  run build; npm  pack --ignore-scripts --pack-destination build. 배포 전에 타르볼의 파일 목록을 검사하세요.\n"
+    },
+    {
+      "id": "b000011",
+      "kind": "blank",
+      "start_line": 15,
+      "end_line": 15,
+      "raw": "\n"
+    },
+    {
+      "id": "b000012",
+      "kind": "paragraph",
+      "start_line": 16,
+      "end_line": 16,
+      "raw": "0.2.1  는 backdrop-filter 을 가진 재료 내부의 툴팁 위치를 수정합니다. 툴팁은 DOM  행동에 의해 소유되며 document.body 하에 렌더링되므로, 재료는 그들의 고정 위치 좌표계를 다시 정의할 수 없습니다. 에지 배치와 트리거 아래 대체 경로 는 회귀 -테스트되었습니다; 행동은 aria-describedby 를 복원하고 파괴될 때 포털과 리스너를 제거합니다. 390px 에서 숨겨진 툴팁과 초점된 툴팁을 확인하고, Esc 가 툴팁을 이동시키지 않고 해제함을 확인하세요.\n"
+    },
+    {
+      "id": "b000013",
+      "kind": "blank",
+      "start_line": 17,
+      "end_line": 17,
+      "raw": "\n"
+    },
+    {
+      "id": "b000014",
+      "kind": "paragraph",
+      "start_line": 18,
+      "end_line": 18,
+      "raw": "최종 로컬 결과: svelte-check 0 에러 / 0 경고; 5/5 테스트; publint 와 정적 카탈로그 빌드가 통과했습니다. 390px 브라우저 뷰포트 ( 375px 콘텐츠 너비) 에서, 문서는 툴팁이 숨겨지고 키보드 초점에 있는 상태에서 375px 넓게 유지되었습니다. 가시적인 툴팁은 콘텐츠 뷰포트 내에 있었고, Esc 가 가시 상태를 지웠습니다. 배포 타르볼은 150 예상 파일과 인증 정보, 캐시 또는 app/layout API 가 없습니다.\n"
+    }
+  ],
+  "outline": [
+    {
+      "block_id": "b000003",
+      "parent_id": null,
+      "level": 1,
+      "title": "출시 확인: 0.2.1",
+      "anchor": "출시-확인-021",
+      "start_line": 3
+    }
+  ],
+  "indexes": {
+    "directive_candidates": [],
+    "commands": [],
+    "links": [],
+    "tables": []
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}

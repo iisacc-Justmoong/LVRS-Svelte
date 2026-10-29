@@ -1,0 +1,555 @@
+{
+  "format": "iisacc.agent-document",
+  "schema_version": 1,
+  "document_id": "urn:iisacc:document:3618e00b823739b05ec9d19c5cd86bd7dd9f6c1dbce3f4427ff1674d7edc41dc",
+  "project": {
+    "id": "urn:iisacc:project:SDK%2FLVRS-Svelte",
+    "name": "LVRS-Svelte",
+    "root": "SDK/LVRS-Svelte",
+    "kind": "sdk"
+  },
+  "source": {
+    "path": "README.md",
+    "sha256": "2bfe3d1fcb20b9921d35a2cebc69a9f47e83272e02be75b28e34a9ab97d498f9",
+    "bytes": 4128,
+    "line_count": 100,
+    "encoding": "utf-8",
+    "language": "en"
+  },
+  "document": {
+    "title": "LVRS-Svelte",
+    "role": "overview",
+    "authority": "markdown_source"
+  },
+  "blocks": [
+    {
+      "id": "b000001",
+      "kind": "heading",
+      "start_line": 1,
+      "end_line": 1,
+      "raw": "# LVRS-Svelte\n",
+      "level": 1,
+      "title": "LVRS-Svelte"
+    },
+    {
+      "id": "b000002",
+      "kind": "blank",
+      "start_line": 2,
+      "end_line": 2,
+      "raw": "\n"
+    },
+    {
+      "id": "b000003",
+      "kind": "paragraph",
+      "start_line": 3,
+      "end_line": 3,
+      "raw": "[Windows build and execution](docs/WindowsBuildAndRun.md)\n"
+    },
+    {
+      "id": "b000004",
+      "kind": "blank",
+      "start_line": 4,
+      "end_line": 4,
+      "raw": "\n"
+    },
+    {
+      "id": "b000005",
+      "kind": "paragraph",
+      "start_line": 5,
+      "end_line": 7,
+      "raw": "Package release: **0.2.2** (2026-10-19). This patch packages the current\nsource snapshot; build, test and installation evidence is recorded in the SDK\npatch-release report. Earlier versioned feature notes remain historical.\n"
+    },
+    {
+      "id": "b000006",
+      "kind": "blank",
+      "start_line": 8,
+      "end_line": 9,
+      "raw": "\n\n"
+    },
+    {
+      "id": "b000007",
+      "kind": "paragraph",
+      "start_line": 10,
+      "end_line": 11,
+      "raw": "LVRS visual components, materials and elastic interaction for Svelte 5.\nThis release follows LVRS source `953189f1217b8eab6ec0abba23c8ad5dc6a43ef2` (2026-09-13).\n"
+    },
+    {
+      "id": "b000008",
+      "kind": "blank",
+      "start_line": 12,
+      "end_line": 12,
+      "raw": "\n"
+    },
+    {
+      "id": "b000009",
+      "kind": "fenced_code",
+      "start_line": 13,
+      "end_line": 15,
+      "raw": "```sh\nnpm install lvrs-svelte\n```\n",
+      "language": "sh",
+      "code": "npm install lvrs-svelte\n",
+      "closed": true
+    },
+    {
+      "id": "b000010",
+      "kind": "blank",
+      "start_line": 16,
+      "end_line": 16,
+      "raw": "\n"
+    },
+    {
+      "id": "b000011",
+      "kind": "fenced_code",
+      "start_line": 17,
+      "end_line": 28,
+      "raw": "```svelte\n<script>\n  import { PushButton, PanelMaterial, InputField, Card } from 'lvrs-svelte';\n  let title = '';\n</script>\n\n<PanelMaterial>\n  <InputField label=\"Project name\" bind:text={title} />\n  <PushButton text=\"Create project\" size=\"medium\" on:click={() => console.log(title)} />\n</PanelMaterial>\n<Card type=\"link\" title=\"Documentation\" href=\"/docs\" actionText=\"Read docs\" />\n```\n",
+      "language": "svelte",
+      "code": "<script>\n  import { PushButton, PanelMaterial, InputField, Card } from 'lvrs-svelte';\n  let title = '';\n</script>\n\n<PanelMaterial>\n  <InputField label=\"Project name\" bind:text={title} />\n  <PushButton text=\"Create project\" size=\"medium\" on:click={() => console.log(title)} />\n</PanelMaterial>\n<Card type=\"link\" title=\"Documentation\" href=\"/docs\" actionText=\"Read docs\" />\n",
+      "closed": true
+    },
+    {
+      "id": "b000012",
+      "kind": "blank",
+      "start_line": 29,
+      "end_line": 29,
+      "raw": "\n"
+    },
+    {
+      "id": "b000013",
+      "kind": "paragraph",
+      "start_line": 30,
+      "end_line": 32,
+      "raw": "CSS is imported with the package and is available during SSR. A theme provider and browser\ninitialization are unnecessary. `lvrs-svelte/theme.css` and `lvrs-svelte/styles.css` are also\nexplicit exports. All build output lives under `build/`.\n"
+    },
+    {
+      "id": "b000014",
+      "kind": "blank",
+      "start_line": 33,
+      "end_line": 33,
+      "raw": "\n"
+    },
+    {
+      "id": "b000015",
+      "kind": "heading",
+      "start_line": 34,
+      "end_line": 34,
+      "raw": "## Visual scope\n",
+      "level": 2,
+      "title": "Visual scope"
+    },
+    {
+      "id": "b000016",
+      "kind": "blank",
+      "start_line": 35,
+      "end_line": 35,
+      "raw": "\n"
+    },
+    {
+      "id": "b000017",
+      "kind": "paragraph",
+      "start_line": 36,
+      "end_line": 39,
+      "raw": "59 public components cover buttons, labels, inputs, selection, progress, tables, lists, hierarchy,\nmenus, cards, dialogs, sheets, popovers, tooltips and materials. See [component reference](docs/components.md).\nApplicationWindow, AppShell, HStack, VStack, ZStack, Spacer, PageRouter and Navigator were removed\nin 0.2.0. Use native HTML/CSS and your application's router to compose these visual components.\n"
+    },
+    {
+      "id": "b000018",
+      "kind": "blank",
+      "start_line": 40,
+      "end_line": 40,
+      "raw": "\n"
+    },
+    {
+      "id": "b000019",
+      "kind": "paragraph",
+      "start_line": 41,
+      "end_line": 44,
+      "raw": "Authored metrics are unscaled: body 13px, icons 18px, compact controls 22px. Medium (36px) and\nlarge (44px) buttons are explicit options for web and touch surfaces. Panel colors and CSS alpha\nare derived from the current LVRS tokens. Panel materials support dense (75%, 64px blur), glass\n(25%, 16px blur) and solid coatings. Web backdrop blur is a CSS approximation of native LVRS materials.\n"
+    },
+    {
+      "id": "b000020",
+      "kind": "blank",
+      "start_line": 45,
+      "end_line": 45,
+      "raw": "\n"
+    },
+    {
+      "id": "b000021",
+      "kind": "heading",
+      "start_line": 46,
+      "end_line": 46,
+      "raw": "## Motion and accessibility\n",
+      "level": 2,
+      "title": "Motion and accessibility"
+    },
+    {
+      "id": "b000022",
+      "kind": "blank",
+      "start_line": 47,
+      "end_line": 47,
+      "raw": "\n"
+    },
+    {
+      "id": "b000023",
+      "kind": "paragraph",
+      "start_line": 48,
+      "end_line": 50,
+      "raw": "Controls share a bounded 90ms press, 160ms hover and 360ms elastic release. Their visual child\nanimates independently from the hit area. Surfaces enter over 420ms and dialogs exit over 150ms.\n`prefers-reduced-motion` is respected. Explicit preferences are supported:\n"
+    },
+    {
+      "id": "b000024",
+      "kind": "blank",
+      "start_line": 51,
+      "end_line": 51,
+      "raw": "\n"
+    },
+    {
+      "id": "b000025",
+      "kind": "fenced_code",
+      "start_line": 52,
+      "end_line": 55,
+      "raw": "```js\nimport { setMotionOptions } from 'lvrs-svelte';\nsetMotionOptions({ reducedMotion: true, speed: 1 });\n```\n",
+      "language": "js",
+      "code": "import { setMotionOptions } from 'lvrs-svelte';\nsetMotionOptions({ reducedMotion: true, speed: 1 });\n",
+      "closed": true
+    },
+    {
+      "id": "b000026",
+      "kind": "blank",
+      "start_line": 56,
+      "end_line": 56,
+      "raw": "\n"
+    },
+    {
+      "id": "b000027",
+      "kind": "paragraph",
+      "start_line": 57,
+      "end_line": 59,
+      "raw": "Native form controls preserve name/value, disabled, validation and keyboard behavior. Segments\nuse arrow/Home/End keys; menus skip disabled items and support Escape; native dialogs provide\nfocus trapping, background inertness, Escape dismissal and focus restoration.\n"
+    },
+    {
+      "id": "b000028",
+      "kind": "blank",
+      "start_line": 60,
+      "end_line": 60,
+      "raw": "\n"
+    },
+    {
+      "id": "b000029",
+      "kind": "heading",
+      "start_line": 61,
+      "end_line": 61,
+      "raw": "## Development and verification\n",
+      "level": 2,
+      "title": "Development and verification"
+    },
+    {
+      "id": "b000030",
+      "kind": "blank",
+      "start_line": 62,
+      "end_line": 62,
+      "raw": "\n"
+    },
+    {
+      "id": "b000031",
+      "kind": "fenced_code",
+      "start_line": 63,
+      "end_line": 70,
+      "raw": "```sh\nnpm ci\nnpm test\nnpm run check\nnpm run build\nnpm run dev\nnpm pack --ignore-scripts --pack-destination build\n```\n",
+      "language": "sh",
+      "code": "npm ci\nnpm test\nnpm run check\nnpm run build\nnpm run dev\nnpm pack --ignore-scripts --pack-destination build\n",
+      "closed": true
+    },
+    {
+      "id": "b000032",
+      "kind": "blank",
+      "start_line": 71,
+      "end_line": 71,
+      "raw": "\n"
+    },
+    {
+      "id": "b000033",
+      "kind": "paragraph",
+      "start_line": 72,
+      "end_line": 74,
+      "raw": "The build emits a standalone static catalog at `build/catalog` and the typed npm package at\n`build/package`. `npm test` validates token fidelity, motion bounds and SSR for every public\ncomponent. See [release verification](docs/verification.md) for browser scenarios.\n"
+    },
+    {
+      "id": "b000034",
+      "kind": "blank",
+      "start_line": 75,
+      "end_line": 75,
+      "raw": "\n"
+    },
+    {
+      "id": "b000035",
+      "kind": "paragraph",
+      "start_line": 76,
+      "end_line": 78,
+      "raw": "The package uses Svelte as its only runtime peer and adds no runtime component dependency.\nIt uses browser-native input, select, dialog and details behavior, Svelte reactivity/transitions,\nand the official Svelte packaging toolchain. MIT; see LICENSE and NOTICE.md.\n"
+    },
+    {
+      "id": "b000036",
+      "kind": "heading",
+      "start_line": 79,
+      "end_line": 79,
+      "raw": "# Windows validation\n",
+      "level": 1,
+      "title": "Windows validation"
+    },
+    {
+      "id": "b000037",
+      "kind": "blank",
+      "start_line": 80,
+      "end_line": 80,
+      "raw": "\n"
+    },
+    {
+      "id": "b000038",
+      "kind": "paragraph",
+      "start_line": 81,
+      "end_line": 83,
+      "raw": "Shell scripts use LF endings through `.gitattributes`. The installer contract test\nchecks the Git executable mode on Windows, where filesystem POSIX execute bits\nare unavailable; POSIX hosts continue to check the working-file mode.\n"
+    },
+    {
+      "id": "b000039",
+      "kind": "blank",
+      "start_line": 84,
+      "end_line": 84,
+      "raw": "\n"
+    },
+    {
+      "id": "b000040",
+      "kind": "heading",
+      "start_line": 85,
+      "end_line": 85,
+      "raw": "## License\n",
+      "level": 2,
+      "title": "License"
+    },
+    {
+      "id": "b000041",
+      "kind": "blank",
+      "start_line": 86,
+      "end_line": 86,
+      "raw": "\n"
+    },
+    {
+      "id": "b000042",
+      "kind": "paragraph",
+      "start_line": 87,
+      "end_line": 87,
+      "raw": "SPDX-License-Identifier: MIT\n"
+    },
+    {
+      "id": "b000043",
+      "kind": "blank",
+      "start_line": 88,
+      "end_line": 88,
+      "raw": "\n"
+    },
+    {
+      "id": "b000044",
+      "kind": "paragraph",
+      "start_line": 89,
+      "end_line": 91,
+      "raw": "The original code and documentation in this repository are licensed under the\n[MIT License](LICENSE). Third-party code, libraries, fonts, tools, and model\nweights retain their respective licenses.\n"
+    },
+    {
+      "id": "b000045",
+      "kind": "blank",
+      "start_line": 92,
+      "end_line": 92,
+      "raw": "\n"
+    },
+    {
+      "id": "b000046",
+      "kind": "html",
+      "start_line": 93,
+      "end_line": 93,
+      "raw": "<!-- workspace-docs:readme:start -->\n"
+    },
+    {
+      "id": "b000047",
+      "kind": "heading",
+      "start_line": 94,
+      "end_line": 94,
+      "raw": "## Documentation entry points\n",
+      "level": 2,
+      "title": "Documentation entry points"
+    },
+    {
+      "id": "b000048",
+      "kind": "blank",
+      "start_line": 95,
+      "end_line": 95,
+      "raw": "\n"
+    },
+    {
+      "id": "b000049",
+      "kind": "list",
+      "start_line": 96,
+      "end_line": 99,
+      "raw": "- Human overview: this English `README.md`.\n- Agent instructions: [AGENT.md](AGENT.md).\n- Human documentation: [documentation index](docs/README.md).\n- Structured agent documentation: [agent index](docs/agent-index.json).\n",
+      "items": [
+        {
+          "marker": "-",
+          "text": "Human overview: this English `README.md`.",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Agent instructions: [AGENT.md](AGENT.md).",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Human documentation: [documentation index](docs/README.md).",
+          "checked": null
+        },
+        {
+          "marker": "-",
+          "text": "Structured agent documentation: [agent index](docs/agent-index.json).",
+          "checked": null
+        }
+      ]
+    },
+    {
+      "id": "b000050",
+      "kind": "html",
+      "start_line": 100,
+      "end_line": 100,
+      "raw": "<!-- workspace-docs:readme:end -->\n"
+    }
+  ],
+  "outline": [
+    {
+      "block_id": "b000001",
+      "parent_id": null,
+      "level": 1,
+      "title": "LVRS-Svelte",
+      "anchor": "lvrs-svelte",
+      "start_line": 1
+    },
+    {
+      "block_id": "b000015",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "Visual scope",
+      "anchor": "visual-scope",
+      "start_line": 34
+    },
+    {
+      "block_id": "b000021",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "Motion and accessibility",
+      "anchor": "motion-and-accessibility",
+      "start_line": 46
+    },
+    {
+      "block_id": "b000029",
+      "parent_id": "b000001",
+      "level": 2,
+      "title": "Development and verification",
+      "anchor": "development-and-verification",
+      "start_line": 61
+    },
+    {
+      "block_id": "b000036",
+      "parent_id": null,
+      "level": 1,
+      "title": "Windows validation",
+      "anchor": "windows-validation",
+      "start_line": 79
+    },
+    {
+      "block_id": "b000040",
+      "parent_id": "b000036",
+      "level": 2,
+      "title": "License",
+      "anchor": "license",
+      "start_line": 85
+    },
+    {
+      "block_id": "b000047",
+      "parent_id": "b000036",
+      "level": 2,
+      "title": "Documentation entry points",
+      "anchor": "documentation-entry-points",
+      "start_line": 94
+    }
+  ],
+  "indexes": {
+    "directive_candidates": [],
+    "commands": [
+      {
+        "block_id": "b000009",
+        "language": "sh",
+        "code": "npm install lvrs-svelte\n"
+      },
+      {
+        "block_id": "b000031",
+        "language": "sh",
+        "code": "npm ci\nnpm test\nnpm run check\nnpm run build\nnpm run dev\nnpm pack --ignore-scripts --pack-destination build\n"
+      }
+    ],
+    "links": [
+      {
+        "block_id": "b000003",
+        "label": "Windows build and execution",
+        "target": "docs/WindowsBuildAndRun.md",
+        "kind": "relative",
+        "line": 3
+      },
+      {
+        "block_id": "b000017",
+        "label": "component reference",
+        "target": "docs/components.md",
+        "kind": "relative",
+        "line": 37
+      },
+      {
+        "block_id": "b000033",
+        "label": "release verification",
+        "target": "docs/verification.md",
+        "kind": "relative",
+        "line": 74
+      },
+      {
+        "block_id": "b000044",
+        "label": "MIT License",
+        "target": "LICENSE",
+        "kind": "relative",
+        "line": 90
+      },
+      {
+        "block_id": "b000049",
+        "label": "AGENT.md",
+        "target": "AGENT.md",
+        "kind": "relative",
+        "line": 97
+      },
+      {
+        "block_id": "b000049",
+        "label": "documentation index",
+        "target": "docs/README.md",
+        "kind": "relative",
+        "line": 98
+      },
+      {
+        "block_id": "b000049",
+        "label": "agent index",
+        "target": "docs/agent-index.json",
+        "kind": "relative",
+        "line": 99
+      }
+    ],
+    "tables": []
+  },
+  "provenance": {
+    "generator": "workspace-docs",
+    "version": "1.0.0",
+    "profile": "lossless-blocks-v1",
+    "derived": true
+  }
+}
