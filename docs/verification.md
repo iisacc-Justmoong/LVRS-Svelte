@@ -16,3 +16,5 @@ npm  run dev 로 재현하세요. 데스크톱과 390px  너비에서 카탈로�
 0.2.1  는 backdrop-filter 을 가진 재료 내부의 툴팁 위치를 수정합니다. 툴팁은 DOM  행동에 의해 소유되며 document.body 하에 렌더링되므로, 재료는 그들의 고정 위치 좌표계를 다시 정의할 수 없습니다. 에지 배치와 트리거 아래 대체 경로 는 회귀 -테스트되었습니다; 행동은 aria-describedby 를 복원하고 파괴될 때 포털과 리스너를 제거합니다. 390px 에서 숨겨진 툴팁과 초점된 툴팁을 확인하고, Esc 가 툴팁을 이동시키지 않고 해제함을 확인하세요.
 
 최종 로컬 결과: svelte-check 0 에러 / 0 경고; 5/5 테스트; publint 와 정적 카탈로그 빌드가 통과했습니다. 390px 브라우저 뷰포트 ( 375px 콘텐츠 너비) 에서, 문서는 툴팁이 숨겨지고 키보드 초점에 있는 상태에서 375px 넓게 유지되었습니다. 가시적인 툴팁은 콘텐츠 뷰포트 내에 있었고, Esc 가 가시 상태를 지웠습니다. 배포 타르볼은 150 예상 파일과 인증 정보, 캐시 또는 app/layout API 가 없습니다.
+
+기본 `npm run build`는 모듈 패키지만 만들고 catalog는 `npm run build:catalog`로 명시적으로 생성한다. npm 캐시는 `resources/.state/npm-cache`에 두며, 보존할 이전 배포 타르볼과 설정은 `resources/.recovery/`와 `resources/.state/`에 분리한다.

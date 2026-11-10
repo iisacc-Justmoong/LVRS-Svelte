@@ -10,9 +10,9 @@
   },
   "source": {
     "path": "docs/verification.md",
-    "sha256": "409f54f4043cc5bc63c50ef1ef3fbfbbd746fcba3e1a45fdba1a10db4167a144",
-    "bytes": 2440,
-    "line_count": 18,
+    "sha256": "c62bd50139131860f9ab48fbfdace91d7f3b326c40c33de8fb50587cfc8e18e9",
+    "bytes": 2729,
+    "line_count": 20,
     "encoding": "utf-8",
     "language": "ko"
   },
@@ -148,6 +148,20 @@
       "start_line": 18,
       "end_line": 18,
       "raw": "최종 로컬 결과: svelte-check 0 에러 / 0 경고; 5/5 테스트; publint 와 정적 카탈로그 빌드가 통과했습니다. 390px 브라우저 뷰포트 ( 375px 콘텐츠 너비) 에서, 문서는 툴팁이 숨겨지고 키보드 초점에 있는 상태에서 375px 넓게 유지되었습니다. 가시적인 툴팁은 콘텐츠 뷰포트 내에 있었고, Esc 가 가시 상태를 지웠습니다. 배포 타르볼은 150 예상 파일과 인증 정보, 캐시 또는 app/layout API 가 없습니다.\n"
+    },
+    {
+      "id": "b000015",
+      "kind": "blank",
+      "start_line": 19,
+      "end_line": 19,
+      "raw": "\n"
+    },
+    {
+      "id": "b000016",
+      "kind": "paragraph",
+      "start_line": 20,
+      "end_line": 20,
+      "raw": "기본 `npm run build`는 모듈 패키지만 만들고 catalog는 `npm run build:catalog`로 명시적으로 생성한다. npm 캐시는 `resources/.state/npm-cache`에 두며, 보존할 이전 배포 타르볼과 설정은 `resources/.recovery/`와 `resources/.state/`에 분리한다.\n"
     }
   ],
   "outline": [

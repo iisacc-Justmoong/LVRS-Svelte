@@ -10,8 +10,8 @@
   },
   "source": {
     "path": "README.md",
-    "sha256": "2bfe3d1fcb20b9921d35a2cebc69a9f47e83272e02be75b28e34a9ab97d498f9",
-    "bytes": 4128,
+    "sha256": "94efeabc96fbafb5c5ef6973714bee4fe6bdc8a16b945e91410fa85d200b1060",
+    "bytes": 4178,
     "line_count": 100,
     "encoding": "utf-8",
     "language": "en"
@@ -271,7 +271,7 @@
       "kind": "paragraph",
       "start_line": 72,
       "end_line": 74,
-      "raw": "The build emits a standalone static catalog at `build/catalog` and the typed npm package at\n`build/package`. `npm test` validates token fidelity, motion bounds and SSR for every public\ncomponent. See [release verification](docs/verification.md) for browser scenarios.\n"
+      "raw": "The default build emits the typed npm package at `build/package`. Run `npm run build:catalog`\nto additionally build the standalone catalog at `build/catalog`. `npm test` validates token fidelity, motion bounds and SSR for every public\ncomponent. See [release verification](docs/verification.md) for browser scenarios.\n"
     },
     {
       "id": "b000034",

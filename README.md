@@ -69,8 +69,8 @@ npm run dev
 npm pack --ignore-scripts --pack-destination build
 ```
 
-The build emits a standalone static catalog at `build/catalog` and the typed npm package at
-`build/package`. `npm test` validates token fidelity, motion bounds and SSR for every public
+The default build emits the typed npm package at `build/package`. Run `npm run build:catalog`
+to additionally build the standalone catalog at `build/catalog`. `npm test` validates token fidelity, motion bounds and SSR for every public
 component. See [release verification](docs/verification.md) for browser scenarios.
 
 The package uses Svelte as its only runtime peer and adds no runtime component dependency.

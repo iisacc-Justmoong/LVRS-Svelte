@@ -23,7 +23,7 @@ PowerShell에서 LVRS-Svelte 프로젝트 루트로 이동하여 실행한다. n
 $ErrorActionPreference = 'Stop'
 $workspace = (Resolve-Path -LiteralPath '../..').Path
 $env:PATH = 'C:/Program Files/nodejs;' + $env:PATH
-$env:NPM_CONFIG_CACHE = Join-Path $workspace 'build/npm-cache'
+$env:NPM_CONFIG_CACHE = Join-Path (Get-Location).Path 'resources/.state/npm-cache'
 node.exe --version
 npm.cmd ci --no-audit --no-fund
 if ($LASTEXITCODE -ne 0) { throw '의존성 설치 실패' }
@@ -32,14 +32,14 @@ if ($LASTEXITCODE -ne 0) { throw 'Node 실행 테스트 실패' }
 npm.cmd run check
 if ($LASTEXITCODE -ne 0) { throw 'Svelte 검사 실패' }
 npm.cmd run build
-if ($LASTEXITCODE -ne 0) { throw '패키지 및 catalog 빌드 실패' }
+if ($LASTEXITCODE -ne 0) { throw '패키지 빌드 실패' }
 ```
 
-SvelteKit 중간 파일은 `build/kit`, 배포 패키지는 `build/package`, 정적 catalog는 `build/catalog`에 생성된다. `prepack`에는 theme 생성, svelte-package와 publint가 포함된다.
+기본 빌드는 `build/package`에 패키지를 생성한다. SvelteKit 중간 파일은 `build/kit`에 두고, catalog가 필요할 때만 `npm.cmd run build:catalog`로 `build/catalog`을 만든다. `prepack`에는 theme 생성, svelte-package와 publint가 포함된다.
 
 ## 실행
 
-빌드한 catalog를 loopback 주소에서 제공한다. 아래 프로세스는 PowerShell에서 Ctrl+C로 종료한다.
+`npm.cmd run build:catalog`로 catalog를 별도 생성한 뒤 loopback 주소에서 제공한다. 아래 프로세스는 PowerShell에서 Ctrl+C로 종료한다.
 
 ```powershell
 npm.cmd run preview -- --host 127.0.0.1 --port 4179 --strictPort
